@@ -61,3 +61,19 @@
 - 재검증: #3 PASS — spawn 도구의 agent_type 목록에 `cofa-architect, cofa-architect-deep, cofa-explorer, cofa-planner, cofa-reviewer, cofa-reviewer-terra, cofa-verifier, cofa-worker, cofa-writer` 9종 노출(내장 default/explorer/worker·OMX 설치분과 공존) / #4 원본: FAIL — "Unknown model `gpt-6.1-sol` for spawn_agent. Available models: gpt-6-astra, gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna"(spawn이 TOML model을 런타임 카탈로그와 대조) / #4 사본: PASS — `cofa-explorer` spawn(JSONL `collab_tool_call` 2건) → `README.md:7` 반환 / #9 사본: PASS — `cofa-verifier` spawn, `bash -n scripts/probe.sh` 직접 실행, 종료 1을 FAIL로 사실 보고(원인은 Windows 샌드박스의 Git Bash CreateFileMapping 거부, kit 무관) / #5: 런타임 모델 표시 없음(exec 모드) / #14: FAIL — 세션 내 중첩 `codex exec` "failed to initialize in-process app-server client: 액세스가 거부되었습니다 (os error 5)" / 단독 프로브: gpt-5.6-terra exit 0 "ok", gpt-6.1-sol·gpt-6-luna exit 1 "Model metadata not found"(로컬 0.154 카탈로그 한계) / repo·포크 공개 확인 HTTP 200
 - 한계·잔여: 로컬 버전이 대회 추정치(0.161+)와 달라 6.x ID는 로컬에서 검증 불가 — 메커니즘(등록·이름 spawn·TOML 모델 적용)은 5.6 사본으로 증명됨. `$verify`의 별도 read-only 프로세스 경로는 Windows 세션 안에서 차단됐고 Linux 환경은 미확인 → 폴백(리더 직접 재실행)이 기본일 가능성. 반영: `$model-routing` 폴백 0(spawn 모델 검증 실패 처리), 체크리스트 #4·#14 메모, vendor/omx README를 포크 기준으로. 서브에이전트 spawn은 JSONL에서 `item.*`/`collab_tool_call`로 관찰됨(향후 Disclaude 진행 표시에 활용 가능).
 - 비용: 리허설 3회 + 프로브 3회(실측 토큰 미집계, exec 모드에서 usage는 turn.completed에만)
+
+### [7] [verify] 모의 과제 1차 — 전체 루프 강제·위임 강제(한 줄 버그) — 2026-10-30 02:05
+- 분류/모델: 모의. 리더 `-m gpt-5.6-sol`(로컬 카탈로그), 에이전트 TOML은 5.6으로 임시 치환한 사본(Temp/cofa-kit-rehearsal). 과제: `sample/stats.py` median이 짝수 길이에서 가운데 두 값 평균 대신 하나만 반환(테스트 7개 중 1개 실패)
+- 가설·의도: kit의 AGENTS.md 루프를 실제 Codex가 따라가는지, 위임·기록이 실제로 일어나는지 본다. 프롬프트에서 "리더가 직접 고치지 말고 cofa-worker에 위임, 단계마다 엔트리"를 강제했다(루프 전체를 보기 위해).
+- 조치: 540초 상한으로 비대화형 실행.
+- 재검증: 540초 타임아웃(종료 124). 그 안에 기록된 것 — [분류] Scoped(이유: "문서 산출물까지 2개 이상 파일"), [지도·재현] `python -m unittest -q` 종료 1(1 실패 3 != 2.5) + 경쟁 가설 2개(구현 결함 vs 오래된 바이트코드 import)와 구별 프로브(`inspect.getsourcefile`) 실행으로 구현 결함 확정, [계획] 수용 기준 4·실행 단계 4·테스트 파일 SHA256 고정, 이어서 cofa-worker 위임 후 `wait` 중 타임아웃. 명령 22회, 파일 변경 3회(모두 docs). 테스트는 여전히 1 실패, median 미수정.
+- 한계·잔여: 루프 품질(재현·반증·고정 해시)은 평가 기준에 부합하나, **한 줄 버그에 9분을 써도 구현에 못 도달**했다. kit 결함 2건 확인·수정: (1) 분류 기준이 "파일 수"라 기록 문서까지 세어 Trivial이 Scoped로 올라감 → AGENTS 1절 "코드·설정 변경 범위만 센다, Trivial은 2~5단계 건너뜀, 엔트리 1개"로 교체. (2) 단계마다 엔트리 작성이 명령을 늘림 → `$evidence-log`에 크기별 엔트리 수 표(Trivial 1 / Scoped ≤3 / Complex 단계마다)와 "기록은 파일 쓰기 1회" 추가. 리더가 자기 모델을 `gpt-6-astra`로 자가 보고 — exec 모드의 모델 자가 보고는 신뢰하지 않는다(체크리스트 #5와 일치). 2차 모의(Trivial 경로, 강제 없음)는 [8].
+- 비용: exec 모드 usage 미출력(turn 미완료). 벽시계 540초
+
+### [8] [verify] 모의 과제 2차 — Trivial 경로(강제 없음), 수정 반영 후 — 2026-10-30 02:20
+- 분류/모델: 모의. 리더 `-m gpt-5.6-sol`, 에이전트 TOML 5.6 치환 사본. 같은 과제(median 짝수 길이 결함)
+- 가설·의도: [7]에서 고친 분류 기준(코드 범위만)·엔트리 수 규칙이 실제로 Trivial 경로를 타게 하는지, 작성·검증 분리가 유지되는지 본다. 프롬프트는 "AGENTS.md 규칙 그대로, 강제 위임 없음".
+- 조치: 480초 상한 비대화형 실행.
+- 재검증: 종료 0, **109초**, 4단계(분류·재현 → 직접 수정 → `cofa-verifier` 독립 검증 → 기록). 분류 Trivial("구현 파일 1개의 자명한 수식 결함"). `sample/stats.py` 짝수 분기 추가, 테스트 파일 불변. `cd sample && python -m unittest -q` → 종료 0, `Ran 7 tests`, `OK`(리더·verifier 양쪽). JSONL: 명령 5회, 파일 변경 3회, `collab_tool_call` 1건(verifier spawn), decision-log 엔트리 1개 추가. usage: 입력 435,101(캐시 407,808) / 출력 3,900(추론 1,520).
+- 한계·잔여: 수정된 함수 위에 결함을 설명하던 옛 주석이 그대로 남음 — Trivial은 `$cleanup`을 건너뛰므로 생기는 공백. `$verify`/Trivial 규칙에 "수정한 줄 주변의 낡은 주석도 같이 고친다" 한 줄을 추가할지 검토. 입력 토큰의 94%가 캐시 읽기(AGENTS·스킬·TOML 반복 로드) — 사용량 평가가 토큰 수 기준이면 kit 문서 길이가 곧 비용이다. 현재 AGENTS 약 70줄·스킬 21개(선택 시에만 본문 로드)는 유지하되 더 늘리지 않는다. 1차 [7] 대비: 540초 미완 → 109초 완료.
+- 비용: 입력 435k(캐시 408k)·출력 3.9k 토큰(실측, turn.completed usage)
