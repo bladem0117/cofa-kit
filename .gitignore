@@ -1,0 +1,16 @@
+# 런타임 상태·비밀값은 커밋하지 않는다
+.omx/
+.codex/hooks.json.bak
+*.log
+.env
+.env.*
+node_modules/
+__pycache__/
+.DS_Store
+Thumbs.db
+# 세션별 임시 산출물
+tmp/
+scratch/
+# 원본 스킬 저장소(폴백용)는 환경에서 clone — README만 추적
+vendor/*
+!vendor/README.md

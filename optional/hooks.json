@@ -1,0 +1,30 @@
+{
+  "description": "cofa-kit 상기 전용 hook. 차단(decision=block) 없음. SessionStart: docs/notepad.md 요약과 decision-log 마지막 엔트리를 컨텍스트로 주입. Stop: 이번 턴에 변경이 있는데 decision-log에 verify 기록이 없으면 한 줄 상기. 설치: 이 파일을 .codex/hooks.json 으로 복사 → codex 안에서 /hooks 로 승인.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node optional/hooks/session-start.mjs",
+            "statusMessage": "cofa-kit: notepad·decision-log 로드",
+            "additionalContextLimit": 2500,
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node optional/hooks/stop-reminder.mjs",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

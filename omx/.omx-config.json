@@ -1,0 +1,31 @@
+{
+  "_comment": "플랜 A(OMX) 전용. ~/.codex/.omx-config.json 로 복사해 쓴다. OMX 0.21.40 기본은 세 계층 모두 gpt-6-astra 이므로 반드시 덮어쓴다. 배치 원칙은 kit과 동일: Sol 기본(frontier·standard), Luna는 spark(탐색·초안)만, Terra는 교차 리뷰어 역할에만. 근거는 docs/model-routing.md.",
+  "env": {
+    "OMX_DEFAULT_FRONTIER_MODEL": "gpt-6.1-sol",
+    "OMX_DEFAULT_STANDARD_MODEL": "gpt-6.1-sol",
+    "OMX_DEFAULT_SPARK_MODEL": "gpt-6-luna"
+  },
+  "agentModels": {
+    "architect": "gpt-6.1-sol",
+    "planner": "gpt-6.1-sol",
+    "analyst": "gpt-6.1-sol",
+    "critic": "gpt-5.6-terra",
+    "code-reviewer": "gpt-6.1-sol",
+    "security-reviewer": "gpt-6.1-sol",
+    "executor": "gpt-6.1-sol",
+    "verifier": "gpt-6.1-sol",
+    "debugger": "gpt-6.1-sol",
+    "test-engineer": "gpt-6.1-sol",
+    "explore": "gpt-6-luna",
+    "writer": "gpt-6-luna"
+  },
+  "agentReasoning": {
+    "architect": "high",
+    "planner": "high",
+    "code-reviewer": "high",
+    "verifier": "high",
+    "executor": "medium",
+    "explore": "low",
+    "writer": "low"
+  }
+}

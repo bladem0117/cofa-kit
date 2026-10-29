@@ -1,0 +1,22 @@
+# cofa-kit — 프로젝트 스코프 Codex 설정
+# Codex는 신뢰(trusted)된 프로젝트에서만 이 파일을 읽는다. 첫 실행 때 신뢰 여부를 묻는다.
+# 우선순위: CLI 플래그 > 이 파일 > profile > ~/.codex/config.toml > 내장 기본값
+
+# 리더(메인 스레드): 요구 분석·조정·최종 판단
+# 모델 배치의 단일 진실원은 이 파일 + .codex/agents/*.toml 이다. 스킬 본문은 에이전트 이름만 부른다.
+# 공지 단가(2026-10 공개 자료) 기준 6.1 Sol($2/$10)이 5.6 Terra($2/$12)보다 싸거나 같으므로 Sol이 기본.
+# 비용 조절은 모델이 아니라 reasoning effort로 한다. Terra는 Sol 레이트리밋 폴백과 교차 리뷰어(cofa-reviewer-terra)에만, Luna는 위치 찾기·짧은 초안에만.
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"
+
+[agents]
+# 해석 순서: 에이전트 TOML에 명시된 model > default_subagent_model > 현재 부모 모델 상속.
+# 7+2개 TOML이 모두 model을 명시하므로 아래 기본값은 TOML 없이 즉석 생성되는 에이전트에만 적용된다.
+enabled = true
+max_concurrent_threads_per_session = 4
+default_subagent_model = "gpt-6.1-sol"
+default_subagent_reasoning_effort = "medium"
+
+[features]
+# /goal: 토큰 예산·자동 계속·완료 감사. 사용 규칙은 .agents/skills/goal-loop
+goals = true
