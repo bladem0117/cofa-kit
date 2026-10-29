@@ -11,7 +11,9 @@
 ## 설치 (버전 핀)
 
 ```bash
-npm install -g oh-my-codex@0.21.40        # 핀. latest 금지(일 1~3회 릴리스)
+# 본인 공개 포크(태그 v0.21.40 존재 확인, 2026-10-30)에서 설치 — 규정의 "공개 유지" 조건을 스스로 통제
+npm install -g github:bladem0117/oh-my-codex#v0.21.40
+# 포크가 닿지 않을 때만: npm install -g oh-my-codex@0.21.40   (latest 금지 — 일 1~3회 릴리스)
 cp omx/.omx-config.json ~/.codex/.omx-config.json
 omx setup --scope project --merge-agents  # 이 저장소 루트에서. AGENTS.md의 OMX 섹션은 마커 사이에만 들어간다
 omx doctor
