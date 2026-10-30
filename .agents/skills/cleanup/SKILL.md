@@ -1,6 +1,6 @@
 ---
 name: cleanup
-description: 변경 파일만 동작 보존하며 AI 흔적 정리(죽은 코드·디버그 출력·중복·과잉 주석). Use: deslop, simplify, before submission.
+description: 변경 파일만 동작 보존하며 AI 흔적 정리(죽은 코드·디버그 출력·중복·과잉 주석), 끝에 테스트 재실행. 트리거: "군더더기 제거", "코드 간소화", "정리해". Use: deslop, simplify.
 ---
 
 # cleanup — 변경 파일 정리 (동작 보존)

@@ -1,6 +1,6 @@
 ---
 name: debug
-description: 재현→경쟁 가설→구별 프로브→근본 원인→최소 수정→회귀 테스트. 반례 시 cofa-architect 상향. Use: failing test, stack trace, build error.
+description: 재현→경쟁 가설→구별 프로브→근본 원인→최소 수정→회귀 테스트. 반례 시 cofa-architect 상향. 트리거: "오류 고쳐줘", "빌드가 안 돼", "왜 실패하지". Use: failing test, stack trace.
 ---
 
 # debug — 근본 원인 추적

@@ -1,6 +1,6 @@
 ---
 name: verify
-description: 완료 주장을 신선한 실행 증거로 PASS/FAIL 판정(cofa-verifier). 고위험은 별도 read-only 프로세스. Use: verify, does it work, acceptance check.
+description: 완료 주장을 신선한 실행 증거로 기준별 PASS/FAIL/INCOMPLETE/N-A 판정(cofa-verifier), docs/verification.md에 기록. 전부 PASS일 때만 PASS. 트리거: "제대로 돼?", "검증해", "요구사항 충족 확인". Use: verify.
 ---
 
 # verify — 검증
@@ -12,7 +12,7 @@ description: 완료 주장을 신선한 실행 증거로 PASS/FAIL 판정(cofa-v
 2. **위임 또는 직접**: Scoped 이상이면 `cofa-verifier` 서브에이전트에 기준 목록·변경 파일·실행 가능한 명령 후보를 주고 판정을 받는다. Trivial이면 리더가 직접 가장 좁은 검증 명령을 돌린다.
 3. **증거 순서**: 기존 테스트 → 빌드/타입체크 → 기준을 직접 찌르는 명령 → 수동 관찰. 가능한 앞 단계에서 끝낸다.
 4. **연결**: 각 기준에 VERIFIED/PARTIAL/MISSING과 증거(명령·종료 코드·출력 요약)를 붙인다. 변경 전 결과, 기억 속 결과, 요약문은 증거가 아니다.
-5. **판정**: 하나라도 FAIL이면 FAIL. 증거가 없으면 INCOMPLETE. 검증 경로가 없으면 "검증 불가"와 이유.
+5. **판정식**: 기준별 상태는 PASS(증거로 충족) / FAIL(실행 결과가 기준 위반) / INCOMPLETE(미실행·부분 증거) / N/A(실행 환경 문제로 측정 불가, 이유 명시) 중 하나. 전체 판정은 **필수 기준 전부 PASS일 때만 PASS**, FAIL이 하나라도 있으면 FAIL, 그 외는 INCOMPLETE. 환경 실패(N/A)는 FAIL과 섞지 않고 따로 적는다. 결과를 `docs/verification.md`에 "검증 대상(커밋/변경본 ID) · 기준별 표 · 전체 판정"으로 저장한다(재검증 시 덮어쓰지 말고 아래에 새 블록).
 6. **기록**: `$evidence-log`에 판정과 명령을 남기고, `docs/submission-notes.md` 3절에 "무엇을 · 명령 · 결과 · 누가(리더/cofa-verifier/사람)" 한 행을 추가한다(`$submission-notes`).
 
 ## 고위험 변경의 하드 읽기 전용 검증

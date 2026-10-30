@@ -1,6 +1,6 @@
 ---
 name: research
-description: 모르는 SDK·API·규격을 저장소 증거→공식 문서 순으로 조사, 출처·검증/추론 구분. 구현 금지. Use: unfamiliar library, how should we.
+description: 모르는 SDK·API·규격을 저장소 증거→공식 문서 순으로 조사, 출처·검증/추론 구분. 구현 금지. 트리거: "공식 문서 확인", "사용법 조사", "이거 어떻게 쓰지". Use: unfamiliar library.
 ---
 
 # research — 근거 있는 조사

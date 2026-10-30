@@ -1,6 +1,6 @@
 ---
 name: vendored-skill
-description: 폴백: vendor/의 OMC·OMX 원문 스킬 1파일을 읽어 Codex 도구로 번역해 수행. Use: $vendored-skill omc|omx <name> when no kit skill fits.
+description: 폴백: vendor/의 OMC·OMX 원문 스킬 1파일을 읽어 Codex 도구로 번역해 수행. 재귀 1단계, 순환 금지. 트리거: "여기 없는 기능", "원본 스킬 참고". Use: $vendored-skill omc|omx <name>.
 ---
 
 # vendored-skill — 원본 스킬 참조 폴백
@@ -11,7 +11,7 @@ kit의 스킬은 OMC/OMX 계약을 40~60줄로 다시 쓴 것이다. 거기 없�
 `vendor/omc`(oh-my-claudecode, 태그 고정)와 `vendor/omx`(oh-my-codex, 태그 고정)가 있어야 한다. 없고 네트워크도 막혀 있으면 이 스킬을 쓰지 말고 kit 스킬로 대체한 뒤 그 사실을 기록한다.
 
 ## 절차
-1. **필요한 기능을 한 문장으로** 적고, kit 스킬 13+8개 중 정말 없는지 `AGENTS.md` 8절 표로 확인한다. 완료 기준: "kit에 없는 이유" 한 줄.
+1. **필요한 기능을 한 문장으로** 적고, kit 스킬 25개 중 정말 없는지 `AGENTS.md` 8절 표로 확인한다. 완료 기준: "kit에 없는 이유" 한 줄. **재귀는 1단계까지**: 읽은 원문이 다른 OMC/OMX 스킬을 부르면 그 호출은 kit 스킬로 대체하거나 생략한다(원문→원문 연쇄 금지, 순환 금지).
 2. **원본 찾기**: `vendor/omc/skills/<name>/SKILL.md`, `vendor/omc/agents/<name>.md`, `vendor/omx/skills/<name>/SKILL.md`, `vendor/omx/prompts/`. 필요한 **한 파일만** 읽는다. 500줄이 넘으면 "When to use / Workflow(절차) / Rules / Output" 절만 읽는다.
 3. **번역표 적용**:
 

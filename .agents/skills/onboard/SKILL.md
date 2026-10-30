@@ -1,6 +1,6 @@
 ---
 name: onboard
-description: 낯선 저장소의 1쪽 지도: 기준선 실행·진입점·모듈·관례·위험을 증거/추론/미확인으로. 읽기 전용. Use: new codebase, analyze, how does X work.
+description: 낯선 저장소의 1쪽 지도: 기준선 실행·진입점·모듈·관례·위험을 증거/추론/미확인으로. 코드 읽기 전용(docs 기록만 씀). 트리거: "구조 설명해", "어디서 처리해?", "어떻게 돌아가?". Use: analyze codebase.
 ---
 
 # onboard — 저장소 지도 (읽기 전용)
@@ -27,7 +27,7 @@ OMX `analyze`의 증거 규율과 OMC `deepinit`·`architecture-survey`의 지�
 8. `$evidence-log`에 엔트리.
 
 ## 규칙
-- 파일을 수정하지 않는다. 구현 계획도 여기서 쓰지 않는다(→ `$plan`).
+- 코드·설정 파일을 수정하지 않는다. `docs/onboard.md`·`docs/decision-log.md` 기록만 예외다. 구현 계획도 여기서 쓰지 않는다(→ `$plan`).
 - 증거가 뒷받침하지 않는 권고를 하지 않는다. 추측을 증거처럼 쓰지 않는다.
 - 200줄 넘는 파일은 outline 후 필요한 구간만 읽는다.
 - 모든 경로는 저장소 루트 기준으로 `파일:줄`.

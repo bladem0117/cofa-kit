@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Complex·고위험 계획의 독립 검토 합의(cofa-architect-deep → cofa-reviewer, 같은 스냅샷, 작성자만 종합). Use: architecture decision, plan review, migration.
+description: Complex·고위험 계획의 독립 검토 합의(cofa-architect-deep → cofa-reviewer, 같은 스냅샷, 작성자만 종합, 최종본 재승인). 트리거: "설계 비교해", "대안 검토", "이 구조 괜찮아?". Use: architecture decision.
 ---
 
 # design-review — 독립 검토 기반 설계 합의
@@ -23,7 +23,7 @@ OMC/OMX의 ralplan(Planner → Architect → Critic) 핵심만 가져왔다. 핵
 4. **`cofa-reviewer` 검토**(읽기 전용): 3이 끝난 뒤 **같은 스냅샷**을 별도 spawn으로 준다. `cofa-architect-deep`의 결과는 주지 않는다. 요구: 원칙–선택지 일관성, 대안의 공정성, 위험 완화의 구체성, 수용 기준의 테스트 가능성, 검증 단계의 구체성. 판정 APPROVE / ITERATE / REJECT.
 5. **종합**: 두 결과가 모두 돌아온 뒤 작성자(리더 또는 `cofa-planner`)만 두 피드백을 합쳐 v2를 쓴다. 검토자가 계획을 직접 고치지 않는다.
 6. **반복**: `cofa-reviewer`가 APPROVE가 아니면 3~5를 반복한다. 최대 3라운드. 라운드마다 `templates/review-round.md` 형식으로 `docs/decision-log.md`에 기록.
-7. **종결**: APPROVE 또는 3라운드 소진. 소진 시 남은 지적을 "알려진 한계"로 명시하고 사용자 결정을 받는다. 최종 계획에 ADR 요약(결정·동인·대안·선택 이유·결과·후속)을 붙인다.
+7. **종결·재승인**: APPROVE 또는 3라운드 소진. 소진 시 남은 지적을 "알려진 한계"로 명시하고 사용자 결정을 받는다. 최종 계획에 ADR 요약(결정·동인·대안·선택 이유·결과·후속)을 붙인다. 검토로 바뀐 최종본(v2 이상)은 **사용자에게 다시 보여 재승인**을 받은 뒤에만 `$execute`로 넘긴다. 사용자가 모르는 변경이 구현에 들어가면 안 된다. `$plan`과의 역할: `$plan`은 계획 작성, 이 스킬은 Complex·고위험 계획의 검토·합의만.
 
 ## 규칙
 - 검토자는 순차로, 각각 완료를 기다린 뒤 다음을 띄운다. 병렬로 띄우지 않는다(같은 스냅샷 보장, 교차 오염 방지).

@@ -1,6 +1,6 @@
 ---
 name: model-routing
-description: 역할별 모델·effort 규칙, Terra·Luna 한정 용도, 404·레이트리밋·spawn 모델 검증 폴백, 캘리브레이션. Use: choosing a model, model unavailable, new environment.
+description: 역할별 모델·effort 규칙, Terra·Luna 한정 용도, 404·레이트리밋·spawn 모델 검증 폴백, 캘리브레이션 표 형식. 트리거: "모델이 안 돼", "어떤 모델 쓸까". Use: model unavailable, new environment.
 ---
 
 # model-routing — 모델 라우팅
@@ -44,7 +44,12 @@ Terra의 용도는 두 가지뿐이다. 교차 리뷰어, 그리고 Sol 레이�
 1. `scripts/probe.sh`로 Codex 버전과 환경 확인. 업데이트하지 않는다.
 2. `/model` 목록으로 실제 노출된 모델·버전을 적는다. 특히 Terra가 5.6인지 6.1인지. 6.1 Terra($1/$5)면 결정 규칙이 바뀐다: 구현 기본을 Terra로, Sol은 계획·리뷰로.
 3. 같은 소과제 묶음(검색 1·회상 1·구현 1·검증 1)을 역할별 에이전트로 한 번씩 돌린다. Luna에는 수정 과제를 주지 않는다.
-4. 기록 항목: 실제 모델·effort, 입력/출력/캐시 토큰(알 수 있으면), 재시도 포함 비용·시간, 누락·오탐, 최종 성공 여부.
+4. 기록은 아래 표 형식 그대로 `docs/decision-log.md` 캘리브레이션 엔트리에 붙인다(열 이름을 바꾸지 않는다):
+
+   | 역할 | 요청 모델 | 실제 적용(spawn 성공/오류 문구) | effort | 소요(초) | 토큰 입/출/캐시 | 재시도 | 결과(성공/실패/부분) |
+   |---|---|---|---|---|---|---|---|
+
+   토큰을 알 수 없으면 "미표시"로 적고 비워 두지 않는다.
 5. 기본 표와 다르면 TOML을 고치고 `docs/model-routing.md`와 `docs/decision-log.md`에 변경 이유와 측정값을 남긴다.
 
 ## 규칙

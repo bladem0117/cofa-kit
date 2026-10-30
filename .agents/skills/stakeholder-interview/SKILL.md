@@ -1,6 +1,6 @@
 ---
 name: stakeholder-interview
-description: 과제에 실무자 역할 AI(시나리오 에이전트)가 있을 때, 인터뷰로 간극 하나를 깊게 파고 문제·병목·성공 기준(숫자+현재값+측정처)·범위·제약을 합의문으로 고정한다. 구현 전 필수 관문. Use: scenario agent, 실무자 인터뷰, problem definition, requirements agreement.
+description: 실무자 역할 AI(없으면 과제문·README)와 간극 하나를 깊게 파 문제·병목·숫자 성공 기준·범위·제약을 합의문으로 고정. 구현 전 관문. 트리거: "요구사항부터 정리", "고객에게 뭘 물을까", "문제 정의". Use: requirements.
 ---
 
 # stakeholder-interview — 실무자 인터뷰와 합의문
@@ -27,4 +27,5 @@ Cofa-Probe 형식은 "실무자 AI 인터뷰 → 문제 정의 → 구현"이다
 ## 출력
 - `docs/INTERVIEW.md`, `docs/agreement.md`
 - 선택한 간극과 탈락 후보(이유 한 줄씩)
-- 다음 행동: `$plan`(합의문의 성공 기준을 수용 기준으로)
+- 다음 행동: 기존 코드가 있으면 `$onboard` → `$plan`, 없으면 바로 `$plan`(합의문의 성공 기준을 수용 기준으로)
+- 실무자 역할 AI가 없는 과제: 과제문·README·이슈를 "실무자의 말"로 삼아 2~4단계를 그대로 수행하고, 합의문 확인은 사용자(나)가 한다. 그 사실을 합의문 머리에 적는다

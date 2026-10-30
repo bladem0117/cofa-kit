@@ -1,6 +1,6 @@
 ---
 name: remember
-description: 세션 지식을 notepad·decision-log·AGENTS 중 알맞은 곳에 보존. Use: remember, 기억해, non-obvious fact or preference.
+description: 세션 지식을 notepad·decision-log·AGENTS 중 알맞은 곳에 보존. decision-log는 수정 대신 정정 엔트리. 트리거: "기억해", "다음에도 적용해". Use: remember, preference.
 ---
 
 # remember — 지식 보존
@@ -24,6 +24,7 @@ description: 세션 지식을 notepad·decision-log·AGENTS 중 알맞은 곳에
 
 ## 규칙
 - 비밀값·개인정보는 저장하지 않는다.
+- `docs/decision-log.md`의 기존 엔트리는 고치거나 지우지 않는다. 틀렸으면 "정정: [n]의 X를 Y로" 엔트리를 새로 추가한다. 삭제·갱신은 `docs/notepad.md`와 AGENTS에만 적용한다.
 - 상대 날짜("어제")는 절대 날짜로 바꿔 적는다.
 - 한 항목은 세 줄 안에.
 

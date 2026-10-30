@@ -1,6 +1,6 @@
 ---
 name: submission-check
-description: 제출 전 체크리스트: 신선한 테스트·미완 표식·비밀값·decision-log 완결·출처·저장소 상태. Use: before submitting or declaring done.
+description: 제출 전 체크리스트: 신선한 테스트·미완 표식·비밀값·기록 완결·출처·저장소 상태·사람 기록. PARTIAL은 한계 명시 시에만 제출 가능. 트리거: "제출해도 돼?", "마감 점검". Use: before submitting.
 ---
 
 # submission-check — 제출 전 점검
@@ -12,7 +12,7 @@ description: 제출 전 체크리스트: 신선한 테스트·미완 표식·비
 2. **미완 표식 스캔**: `TODO|FIXME|HACK|XXX`, skip된 테스트, 스텁 함수, 디버그 출력(console.log/print)을 변경 파일에서 찾는다. 있으면 제거하거나 "의도된 한계"로 로그에 적고 사용자 승인.
 3. **비밀값·개인정보 스캔**: 토큰·키·비밀번호 패턴, 이메일, 내부 경로, 회사 식별자를 변경 파일과 `docs/`에서 찾는다. 발견 시 제거 또는 `[REDACTED]`.
 4. **decision-log 완결성**: 모든 단계(plan/execute/review/verify)에 엔트리가 있고, 각 엔트리의 재검증 칸에 명령과 결과가 있는지. 실패·우회가 있었다면 그 복구 과정이 적혀 있는지.
-5. **요구사항 대조**: 원래 과제 문장을 다시 읽고 수용 기준 표의 상태가 모두 VERIFIED인지. PARTIAL/MISSING은 "알려진 한계"로 명시.
+5. **요구사항 대조**: 원래 과제 문장을 다시 읽고 `docs/verification.md` 최신 블록의 기준 상태를 본다. 판정 규칙: FAIL이 하나라도 있으면 **제출 불가**(고치거나 범위에서 빼고 재검증). PARTIAL/INCOMPLETE는 "알려진 한계"에 이유와 함께 명시되고 **사용자가 수용했을 때만** 제출 가능. N/A(환경 문제)는 측정 불가 사유를 적는다.
 6. **출처**: 참고한 공개 자료(저장소·문서) 목록과, 결과물이 외부 자료의 통째 복사가 아님을 한 줄로.
 7. **저장소 상태**: 사용한 공개 저장소가 공개 상태인지, 작업 트리에 의도치 않은 파일(임시·로그·`.omx/`)이 없는지 `git status`로 확인.
 8. **사람 기록 정리**: `$submission-notes` 절차 5~7을 실행해 `docs/submission-notes.md` 6절(내가 구현한 것 / AI 제안 중 내가 수정한 것) 초안을 완성하고 사용자에게 보여 준다. 이 초안이 평가 환경의 수동 기입란에 그대로 들어간다.
@@ -29,6 +29,7 @@ description: 제출 전 체크리스트: 신선한 테스트·미완 표식·비
 | 5 | 요구사항 대조 | PASS/PARTIAL | 기준 k/n VERIFIED |
 | 6 | 출처 | PASS | 목록 n건 |
 | 7 | 저장소 상태 | PASS | git status clean |
+| 8 | 사람 기록(submission-notes 6절) | PASS | 두 문장 초안 작성, 주체 구분 확인 |
 
 - 알려진 한계: ...
 - 다음 행동: 제출 / 보완 항목 #

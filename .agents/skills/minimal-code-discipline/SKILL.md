@@ -1,6 +1,6 @@
 ---
 name: minimal-code-discipline
-description: 코드 쓰기 전 YAGNI 사다리(존재→재사용→의존성→최단 diff)와 비협상 항목. Use: minimal change, lean diff, before coding.
+description: 코드 쓰기 전 YAGNI 사다리(존재→재사용→의존성→최단 diff)와 비협상 항목. 트리거: "최소한만 바꿔", "과한 구조 빼줘". Use: minimal change, lean diff.
 ---
 
 # minimal-code-discipline — 최소 코드 규율

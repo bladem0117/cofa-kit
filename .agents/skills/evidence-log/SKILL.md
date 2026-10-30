@@ -1,6 +1,6 @@
 ---
 name: evidence-log
-description: 단계별 결정·증거·한계를 docs/decision-log.md에 가설→조치→재검증→한계로 기록. 크기별 엔트리 수. Use: after each stage, any non-obvious decision.
+description: 단계별 결정·증거·한계를 docs/decision-log.md에 가설→조치→재검증→한계로 기록(정정은 새 엔트리). 크기별 엔트리 수. 트리거: "결정 근거 남겨", "기록해". Use: after each stage.
 ---
 
 # evidence-log — 결정·증거 기록

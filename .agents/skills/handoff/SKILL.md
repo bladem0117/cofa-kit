@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: 단계 전환·컨텍스트 포화·새 세션 시작 전에 다음 담당자(사람이든 새 Codex 세션이든)가 그대로 이어받을 수 있는 인계 문서(docs/handoff.md)를 쓴다. 현재 위치·결정·검증 상태·다음 행동·열린 위험. Use: before /new or /compact, at phase transitions, when /status shows context above 60%, and at submission for the Communication axis.
+description: 단계 전환·컨텍스트 60%·새 세션 전·제출 전 인계 문서(docs/handoff.md): 현재 위치·결정·검증 상태·다음 행동·열린 위험. 재개 시 변경본 대조. 트리거: "새 세션에서 이어가기", "인계 정리". Use: before /new.
 ---
 
 # handoff — 인계 문서
@@ -20,7 +20,7 @@ description: 단계 전환·컨텍스트 포화·새 세션 시작 전에 다음
 4. **다음 행동**: 바로 시작할 수 있는 다음 한 단계(명령 또는 스킬 호출). 그다음 두 단계는 한 줄씩.
 5. **열린 위험·질문**: 확인 못 한 가정, 사용자 결정이 필요한 것, 알려진 한계.
 6. **환경 메모**: 리더 모델·effort, 가용 모델, spawn 가능 여부, 막힌 것(중첩 exec 등). 캘리브레이션 엔트리 포인터.
-7. 저장 후 새 세션을 열면 첫 메시지는 "`docs/handoff.md`를 읽고 '다음 행동'부터 이어가라". `$evidence-log` 엔트리 1개.
+7. 저장 후 새 세션을 열면 첫 메시지는 "`docs/handoff.md`를 읽고 '다음 행동'부터 이어가라". 재개한 세션은 **먼저 `git status`와 `git diff --stat`로 작업 트리를 handoff의 '검증 상태'와 대조**하고, 다르면(인계 뒤 변경이 있었으면) handoff를 갱신한 뒤 진행한다. `$evidence-log` 엔트리 1개.
 
 ## 규칙
 - 한 화면(약 60줄) 안에. 길어지면 포인터로 바꾼다.

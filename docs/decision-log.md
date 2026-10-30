@@ -93,3 +93,11 @@
 - 재검증: 파서 검증 → 스킬 25(디렉터리=name, 설명 합계 2,937/8,000자, 80줄 이하), AGENTS 표 ↔ 디렉터리 불일치 none, `$스킬` 참조 미존재 none, TOML 10·JSON 2 파싱, 제어문자 none
 - 한계·잔여: 후기는 1편(2026-07, GPT-5.5 시절)이라 현재 환경과 다를 수 있음(소유자 1차 접속에서 6.1 Sol 기본·npm 불가 확인). 확인 문제의 실제 문항·채점은 비공개라 cognition-prep의 3단계 형식은 후기의 "모범답안 형식" 서술에 의존. 시간 배분은 추정이며 리허설 #19로 보정해야 함.
 - 비용: 해당 없음
+
+### [11] [review] 스킬 25종 충분성·자동 호출·산출물 Codex 격리 리뷰 반영 — 2026-10-31
+- 분류/모델: 해당 없음 / 리뷰어 codex exec(read-only, --ignore-user-config, effort high), 47,603 토큰, 입력 78KB(스킬 전문 25개)
+- 가설·의도: 소유자 우려 — "낯선 스킬명이라 자연어로는 자동 실행이 안 될 것 같다" + 각 스킬 프롬프트가 충분한지 외부 시각으로 점검.
+- 조치(리뷰 판정 → 반영): [최상] 사람 기여 귀속 — submission-notes 1절에 주체 열(AI 구현(지시)/AI 구현(승인)/직접 수정), 기록 없는 개입은 추정 금지; cognition-prep에 "실제 무AI 평가 중 사용 금지, 재심문은 AI 허용 확인 후" / [높음] 거짓 완료 — verify 판정식(기준별 PASS/FAIL/INCOMPLETE/N/A, 전부 PASS일 때만 PASS, `docs/verification.md` 블록 저장), execute "구현 종료≠검증 통과, 실패 잔존=미완" / [높음] 승인 왕복 — plan 6단계 "구현 요청+범위 명확이면 기록 후 진행, 불명확·고위험만 승인 대기", execute 1단계 동일, plan 5단계 단일 분기(Scoped 선택 비판 / Complex·고위험 → design-review), design-review 최종본 재승인 / 흐름 공백 — interview 다음은 onboard→plan, 실무자 부재 경로, AGENTS 6단계 "T+190 기능 동결·마지막 변경 뒤 verify 재실행·무AI 평가 시작 시 Codex 종료" / 개별 — review 재현 불가 고위험=차단 후보, crosscheck 다른 모델 불가=미충족·갱신 diff 재리뷰, qa 수정 후 verify 재진입·qa-report.md, test-strategy 첫 GREEN 점검, git-hygiene 비대화형 add·오탐 사유, onboard docs 예외, goal-loop /goal 가용성·잔여 시간 상한, model-routing 캘리브레이션 표 고정, submission-check PARTIAL 규칙·8행, vendored-skill 재귀 1단계·개수 정정, remember decision-log 정정 엔트리, handoff 재개 시 git 대조 / 자동 호출 — 25개 description에 한국어 트리거 2~3개+구분 조건(합계 3,267/8,000자), AGENTS 9절 "사용자 표현 → 스킬 → 구분 조건" 라우팅 표 22행(명시 `$이름` 우선, 복합 요청은 현재 단계 우선) / `docs/skill-map.md`(흐름 19행·분기 7행·산출물 파일 표).
+- 재검증: 파서 검증 → 스킬 25(name=dir, 80줄 이하), 설명 합계 3,267자, AGENTS 8절 표 ↔ 디렉터리 불일치 none, `$스킬` 참조 미존재 none, TOML 10·JSON 2, 제어문자 none
+- 한계·잔여: 자연어 자동 호출은 description 매칭에 의존하므로 환경에서 "리뷰해"·"검증해" 같은 표현으로 실제 로드되는지 #17 뒤에 추가 확인 필요(안 되면 `$이름` 명시가 기본). 미반영: review 결과의 별도 파일(docs/review.md)은 decision-log 라운드 기록으로 대체(토큰·IO 절약), workstyle의 상시 규칙 AGENTS 이관은 중복 허용(설명 목적).
+- 비용: 리뷰 47,603 토큰(실측)
