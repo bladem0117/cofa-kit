@@ -95,6 +95,19 @@ Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토�
 
 평가 환경은 마지막에 사람이 "내가 구현한 것"과 "AI 제안 중 내가 수정한 것"을 적게 한다. `docs/submission-notes.md`가 그 초안이다. `$execute`가 구현 단위마다 1절에, 사용자가 AI 제안을 수정·거부하면 그 자리에서 2절에, `$verify`가 3절에 행을 쌓고, 제출 전 `$submission-notes`가 6절 최종 문장 초안을 만든다. 사람은 읽고 고치기만 한다.
 
+## 실측 후기에서 배운 것 (2026-07 코파톤 참가자 후기 반영)
+
+| 후기의 사실 | kit의 대응 |
+|---|---|
+| 환경: E2B 클라우드 샌드박스 웹 IDE. 좌측 파일·에디터, 하단 bash 터미널, 우측 **실무자 역할 AI 채팅**. Claude Code 불가, Codex만. `/fast`·effort 조정 가능했음(당시) | 플랜 B(설치 0). `/model` 없으면 config·`-c` 폴백 |
+| 형식: 실무자 AI 인터뷰 → 문제 정의 → 기획·구현. 루트 README에 문제·해법이 이미 있어 산출물이 수렴 | `$stakeholder-interview`: README 먼저 읽되 간극 하나를 깊게, 합의문에 숫자 성공 기준(지표·현재값·목표·측정처) |
+| 빌드 225분 → **확인 문제 5문항, 문항당 3분, AI 없이 타이핑**(+사후 재심문). 질문은 "왜 그렇게 만들었나·장애 대응", 모범답안은 약점→파급 위험→다음 검증 | `$cognition-prep`: 마감 20분 전 예상 문항 10~15개와 3단계 답 초안을 사람이 읽고 고침 |
+| 평가 4축. Intent가 가장 변별력, **Cognition은 전원 최저**. AI 심사자가 코드·커밋·대화 로그를 읽고 문서↔코드·커밋 연결을 대조 | decision-log·onboard·submission-notes가 Cognition 재료. `$git-hygiene`가 커밋 메시지에 엔트리 번호를 연결 |
+| 실수: 리허설 1회(계획 2회), handoff 없이 세션 이어가기, 새벽 벼락치기. Top3에는 handoff 스킬 | `$handoff`(컨텍스트 60%·단계 전환·제출 전), 체크리스트 #19 풀타임 리허설 2회 |
+| 잘 먹힌 것: "간극 하나만 깊게", 판정·계산은 고정 코드(결정론 코어), "세 가지 왜", 단계 전환마다 자가감사, 산출물별 Codex 교차검증 | 합의문 제약에 결정론 코어, `$evidence-log` 단계 기록, `$crosscheck` |
+
+시간 배분(추정, AGENTS.md 1절): 발굴·합의 30 → 지도·계획 25 → 구현 110 → 리뷰·검증 25 → 마감 35분. 출처: [크래프톤 FDE 코파톤 후기(brunch)](https://brunch.co.kr/@luma/5). 공개 후기는 이 한 편뿐이었다(2026-10-31 검색).
+
 ## 참고한 공개 자료
 
 구조와 역할 분리는 [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)(MIT)와 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)(MIT)의 에이전트·스킬 설계를 참고해 Codex 네이티브 선언으로 다시 썼다. 원문을 복사하지 않았다. 구체적으로 참고한 것: OMC 스킬 execute·review·verify·research·remember·ralplan·minimal-code-discipline·ai-slop-cleaner, OMC 에이전트 planner·architect·executor·verifier·code-reviewer·explore·writer·debugger·tracer·test-engineer, OMX 스킬 analyze·ultraqa·ultragoal·plan·git-master와 OMX 에이전트 정의(frontier/standard/fast 계층). 폴백으로 원문이 필요할 때는 `vendor/`에 태그 고정 clone 후 `$vendored-skill`로 번역해 쓴다. Codex 기능은 [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents.md), [Agent Skills](https://developers.openai.com/codex/skills.md), [Config basics](https://developers.openai.com/codex/config-basic), [Using Goals](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) 문서를 따른다.
