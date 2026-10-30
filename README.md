@@ -77,7 +77,7 @@ Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토�
 
 | 하고 싶은 것 | Codex | 비고 |
 |---|---|---|
-| 모델·reasoning effort 바꾸기 | `/model` → 모델 선택 → effort(low/medium/high/xhigh) 선택 | **`/effort` 명령은 없다.** 시작 시 `codex -c model_reasoning_effort="xhigh"`로도 가능. kit은 config/TOML로 이미 지정 |
+| 모델·reasoning effort 바꾸기 | `/model` → 모델 선택 → effort(low/medium/high/xhigh) 선택 | **`/effort` 명령은 없다.** `/model`이 메뉴에 없으면(관리 설정이 잠근 환경) 세 경로: ① `.codex/config.toml`의 `model_reasoning_effort`를 고치고 `codex` 재시작(신뢰된 프로젝트에서 로드) ② 시작 시 `codex -c model_reasoning_effort="xhigh"` ③ 에이전트별은 `.codex/agents/*.toml`. 현재 값은 `/status`, 어느 설정 층이 이기는지는 `/debug-config`로 확인 |
 | 토큰 사용량·컨텍스트 확인 | `/status` | 모델·승인 정책·쓰기 가능 루트·토큰 사용량 |
 | 컨텍스트 줄이기 | `/compact` | 긴 세션에서 토큰 절약. 요약 후 진행 |
 | 계획 모드 | `/plan <목표>` | 구현 전에 계획만. kit의 `$plan`은 수용 기준·승인 대기까지 |

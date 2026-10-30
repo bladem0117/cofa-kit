@@ -5,7 +5,7 @@
 | # | 기능 | 시험 방법 | 기대 | 실패 시 우회 |
 |---|---|---|---|---|
 | 1 | 환경 확인 | `bash scripts/probe.sh` | Codex 버전·node·npm prefix·tmux·네트워크 출력 | 없음(정보 수집) |
-| 2 | 프로젝트 설정 로드 | `codex` 실행 → 신뢰 승인 → `/status` | 리더 모델 `gpt-6.1-sol`, effort `high`, 토큰 사용량·컨텍스트 표시 | 신뢰 안 되면 `~/.codex/config.toml`에 수동 복사. effort가 다르면 `/model`에서 모델 선택 후 effort 선택(별도 `/effort` 명령 없음) |
+| 2 | 프로젝트 설정 로드 | `codex` 실행 → 신뢰 승인 → `/status` | 리더 모델 `gpt-6.1-sol`, effort `high`, 토큰 사용량·컨텍스트 표시 | 신뢰 안 되면 `~/.codex/config.toml`에 수동 복사. effort가 다르면 `/model`에서 모델 선택 후 effort 선택(별도 `/effort` 없음). **`/model`이 메뉴에 없으면**(관리 설정 잠금 가능) `/debug-config`로 어느 층이 model을 정하는지 확인하고, `.codex/config.toml`의 `model_reasoning_effort` 수정 → `codex` 재시작, 또는 `codex -c model_reasoning_effort="xhigh"`로 시작 |
 | 3 | 커스텀 에이전트 인식 | "사용 가능한 커스텀 에이전트를 나열해" | cofa-planner/architect/architect-deep/worker/explorer/reviewer/reviewer-terra/verifier/writer 9종 | `.codex/agents`를 `~/.codex/agents`로 복사 |
 | 4 | 서브에이전트 spawn | "커스텀 에이전트 `cofa-explorer`를 spawn해 README의 제목 위치만 찾아 보고해" | cofa-explorer가 돌고 경로:줄이 돌아옴(내장 explorer가 아님을 확인). spawn은 TOML `model`을 런타임 카탈로그와 대조하므로 "Unknown model … Available models: …" 오류가 나면 그 목록을 #15의 입력으로 쓴다 | 모델 불일치면 `$model-routing` 폴백 0, `[agents] enabled` 확인, 안 되면 리더가 직접 |
 | 5 | 모델 선택 | 4의 결과에 사용 모델이 Luna인지(런타임 표시 기준, config 파일 읽기 아님) | `gpt-6-luna` | 모델 404면 `$model-routing` 폴백·캘리브레이션 |
