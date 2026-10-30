@@ -6,8 +6,10 @@
 # 모델 배치의 단일 진실원은 이 파일 + .codex/agents/*.toml 이다. 스킬 본문은 에이전트 이름만 부른다.
 # 공지 단가(2026-10 공개 자료) 기준 6.1 Sol($2/$10)이 5.6 Terra($2/$12)보다 싸거나 같으므로 Sol이 기본.
 # 비용 조절은 모델이 아니라 reasoning effort로 한다. Terra는 Sol 레이트리밋 폴백과 교차 리뷰어(cofa-reviewer-terra)에만, Luna는 위치 찾기·짧은 초안에만.
+# 리더는 medium(2026-10-31, decision-log [12]). 평가 환경은 지원자별 토큰·비용을 추적하고 평가자는 "잘하는 사람일수록 비용을 적게 쓴다"고 밝혔다.
+# Sol은 낮은 effort에서도 강하다(OpenAI). 깊은 판단은 high/xhigh 에이전트(cofa-architect·cofa-architect-deep)에 위임한다. 리더 상향은 막힌 증거가 있을 때 /model 픽커에서.
 model = "gpt-6.1-sol"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 
 [agents]
 # 해석 순서: 에이전트 TOML에 명시된 model > default_subagent_model > 현재 부모 모델 상속.

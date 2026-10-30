@@ -23,7 +23,8 @@
 - 
 
 ## 5. 사용한 공개 자료
-- cofa-kit (https://github.com/bladem0117/cofa-kit, MIT) — 작업 하네스
+<!-- 가져온 하네스·스킬은 가중치가 있고, 사후 Q&A는 "무엇을 왜 가져왔고 무엇을 바꿨나"를 묻는다. 한 줄에 셋 다 -->
+- cofa-kit (https://github.com/bladem0117/cofa-kit, MIT) — 작업 하네스. 쓴 것: / 바꾼 것:
 - 
 
 ## 6. 최종 문장 (제출 직전 사람이 작성)

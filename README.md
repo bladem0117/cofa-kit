@@ -58,7 +58,8 @@ omx/                      플랜 A: OMX 0.21.40 핀 + Sol/Terra/Luna 덮어쓰�
 - **작성과 승인은 다른 에이전트.** reviewer·verifier는 작성 컨텍스트와 분리한다. 고위험 변경은 다른 모델의 독립 리뷰를 추가한다.
 - **증거 없는 완료는 없다.** 신선한 명령 출력만 증거다.
 - **Sol 기본, 비용은 effort로 조절.** 공지 단가 기준 6.1 Sol이 5.6 Terra보다 싸거나 같다. Terra는 교차 리뷰어와 레이트리밋 폴백에만, Luna는 위치 찾기·초안에만. 모델명은 설정 파일에만 두고 스킬은 에이전트 이름만 부른다.
-- **루프에는 상한이 있다.** `/goal`에 토큰 예산·반복 상한·종료 조건을 함께 적는다.
+- **비용은 점수다.** 리더 effort medium, 낭비 패턴 금지(AGENTS.md 2절). 평가자: "잘하는 사람일수록 비용을 적게 쓴다".
+- **루프에는 상한이 있다.** `/goal`에 토큰 예산·반복 상한·종료 조건을 함께 적는다. 과제 직후에는 쓰지 않는다.
 - **확인 불가 시 삭제하지 않는다.**
 
 ## 대회 당일 절차 (과제 저장소 루트에서)
@@ -72,7 +73,7 @@ bash scripts/probe.sh     # 확인만. Codex 업데이트·npm 전역 설치 금
 codex                     # "프로젝트 신뢰" 승인 → .codex/ 로드
 ```
 
-Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토큰) → `/model`(노출 모델·버전 확인, 필요 시 effort 선택) → `/skills`(22개 노출 확인) → "커스텀 에이전트 `cofa-explorer`를 spawn해 README 제목 위치를 경로:줄로 보고해"(spawn 성공 = TOML 모델 수락; `Unknown model … Available models: …`면 그 목록으로 `.codex/agents/*.toml` 수정) → 결과를 `docs/decision-log.md` 엔트리 1개로. 이후는 AGENTS.md 1절 루프. kit 파일은 제출 시 **별도 커밋**(`chore(harness): …`)으로 넣어 과제 diff와 분리한다.
+Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토큰) → `/model`(노출 모델·버전 확인, 필요 시 effort 선택) → `/skills`(25개 노출 확인) → "커스텀 에이전트 `cofa-explorer`를 spawn해 README 제목 위치를 경로:줄로 보고해"(spawn 성공 = TOML 모델 수락; `Unknown model … Available models: …`면 그 목록으로 `.codex/agents/*.toml` 수정) → 결과를 `docs/decision-log.md` 엔트리 1개로. 이후는 AGENTS.md 1절 루프. kit 파일은 제출 시 **별도 커밋**(`chore(harness): …`)으로 넣어 과제 diff와 분리한다.
 
 ## Codex 내장 명령 요약 (Claude Code 사용자용)
 
@@ -96,7 +97,7 @@ Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토�
 
 평가 환경은 마지막에 사람이 "내가 구현한 것"과 "AI 제안 중 내가 수정한 것"을 적게 한다. `docs/submission-notes.md`가 그 초안이다. `$execute`가 구현 단위마다 1절에, 사용자가 AI 제안을 수정·거부하면 그 자리에서 2절에, `$verify`가 3절에 행을 쌓고, 제출 전 `$submission-notes`가 6절 최종 문장 초안을 만든다. 사람은 읽고 고치기만 한다.
 
-## 실측 후기에서 배운 것 (2026-07 코파톤 참가자 후기 반영)
+## 실측 후기·평가자 발언에서 배운 것
 
 | 후기의 사실 | kit의 대응 |
 |---|---|
@@ -108,6 +109,17 @@ Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토�
 | 잘 먹힌 것: "간극 하나만 깊게", 판정·계산은 고정 코드(결정론 코어), "세 가지 왜", 단계 전환마다 자가감사, 산출물별 Codex 교차검증 | 합의문 제약에 결정론 코어, `$evidence-log` 단계 기록, `$crosscheck` |
 
 시간 배분(추정, AGENTS.md 1절): 발굴·합의 30 → 지도·계획 25 → 구현 110 → 리뷰·검증 25 → 마감 35분. 출처: [크래프톤 FDE 코파톤 후기(brunch)](https://brunch.co.kr/@luma/5). 공개 후기는 이 한 편뿐이었다(2026-10-31 검색).
+
+평가자 발언(2026-10, [하우와이 AI 팟캐스트](https://www.youtube.com/watch?v=CLpN3zl8noQ): 크래프톤 Cofa-Probe PO 구한모·AI 프로덕트 엔지니어 조정석. 자동 자막 기반이라 어구는 요지):
+
+| 평가자가 말한 것 | kit의 대응 |
+|---|---|
+| 지원자별 도구·토큰·비용을 추적한다. **"잘하는 사람일수록 비용을 적게 쓴다"**. 과제문 복붙 + goal 일괄 실행 → 10분 산출물, 손으로 고치느라 3시간 토큰 소진 | 리더 effort medium(`.codex/config.toml`), AGENTS 2절 낭비 패턴 금지, `$goal-loop` "과제 직후 금지", 체크리스트 #21 토큰 측정 |
+| 실무자 AI: **사소한 맥락 질문부터 점점 깊게** → 고득점. "할 일 1·2·3 알려 달라"는 막히고 감점. 막히면 "뭘 답해 줄 수 있나"는 가능. 요구는 질문마다 하나씩 풀린다. 과제문은 두어 문장 | `$stakeholder-interview` "묻는 법" 절 |
+| 3축의 뿌리는 기술 부채·의도 부채·인지 부채. Intent 고득점: 과제문을 조목조목 따지며 설계를 AI와 논의, 위험 부분은 세부 설계까지, 긴 구현은 서브에이전트로 분리. 복붙 "해줘"는 저득점 | AGENTS 3절 위임 5요소, `$plan`·`$design-review`·`$execute` |
+| Cognition: 산출물에서 문항 생성 — "이 패턴을 왜, 이 라이프사이클에서 왜 유효한가". **AI 과설계 통제**가 핵심(읽기 전용 API 뒤 DB에 쓰기 가드 촘촘 = 범용 설계일 뿐). AI에 끌려가지 않음은 프롬프트에서도 관찰 | `$minimal-code-discipline` 1단 "범용 모범사례만으로 넣지 않는다", `$cognition-prep` 4번째 틀, 거부한 과설계는 submission-notes 2절 |
+| 평가: 지원자당 20개+ 에이전트 병렬, 세부 역량별 루브릭 + 소스 코드 근거, 프런트 화면 캡처·실행 상태 점검. Top3는 "왜 이렇게 했나" 면접으로 1등 결정 | `$submission-check` 1항 클린 기동, `$cognition-prep` |
+| 평소 쓰던 하네스·스킬 업로드 허용, handoff 스킬 가져온 참가자에 가중치. "에고를 버려라" — 가져다 쓰는 사람을 원함. 도메인 지식 있는 비개발자(매장 2년)가 상위권 | kit 자체가 그 하네스. submission-notes 5절 "쓴 것/바꾼 것", 합의문에 사용자 관점 |
 
 ## 참고한 공개 자료
 

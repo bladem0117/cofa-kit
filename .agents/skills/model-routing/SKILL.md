@@ -16,7 +16,8 @@ description: 역할별 모델·effort 규칙, Terra·Luna 한정 용도, 404·�
 
 | 에이전트 | 모델 | effort | 쓰는 곳 | 쓰지 않는 곳 |
 |---|---|---|---|---|
-| 리더, cofa-planner, cofa-architect, cofa-reviewer, cofa-verifier | Sol | high | 요구 분석·설계·리뷰·검증 | 반복 탐색 |
+| 리더(메인 스레드) | Sol | medium | 인터뷰·조정·위임·Trivial 직접 수정 | 깊은 추론(high 에이전트에 넘긴다), 반복 탐색 |
+| cofa-planner, cofa-architect, cofa-reviewer, cofa-verifier | Sol | high | 계획·설계 반론·리뷰·검증 | 반복 탐색 |
 | cofa-architect-deep | Sol | xhigh | `$design-review`의 Complex·고위험 계획 검토만 | 일상 설계 판단 |
 | cofa-worker | Sol | medium | 구현·테스트 작성·버그 수정 | 설계 결정 |
 | cofa-reviewer-terra | Terra | high | `$crosscheck`에서 "작성 모델과 다른 리뷰어" | 그 외 전부 |

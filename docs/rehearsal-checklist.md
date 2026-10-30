@@ -5,7 +5,7 @@
 | # | 기능 | 시험 방법 | 기대 | 실패 시 우회 |
 |---|---|---|---|---|
 | 1 | 환경 확인 | `bash scripts/probe.sh` | Codex 버전·node·npm prefix·tmux·네트워크 출력 | 없음(정보 수집) |
-| 2 | 프로젝트 설정 로드 | `codex` 실행 → 신뢰 승인 → `/status` | 리더 모델 `gpt-6.1-sol`, effort `high`, 토큰 사용량·컨텍스트 표시 | 신뢰 안 되면 `~/.codex/config.toml`에 수동 복사. effort가 다르면 `/model`에서 모델 선택 후 effort 선택(별도 `/effort` 없음). **`/model`이 메뉴에 없으면**(관리 설정 잠금 가능) `/debug-config`로 어느 층이 model을 정하는지 확인하고, `.codex/config.toml`의 `model_reasoning_effort` 수정 → `codex` 재시작, 또는 `codex -c model_reasoning_effort="xhigh"`로 시작 |
+| 2 | 프로젝트 설정 로드 | `codex` 실행 → 신뢰 승인 → `/status` | 리더 모델 `gpt-6.1-sol`, effort `medium`, 토큰 사용량·컨텍스트 표시 | 신뢰 안 되면 `~/.codex/config.toml`에 수동 복사. effort가 다르면 `/model`에서 모델 선택 후 effort 선택(별도 `/effort` 없음). **`/model`이 메뉴에 없으면**(관리 설정 잠금 가능) `/debug-config`로 어느 층이 model을 정하는지 확인하고, `.codex/config.toml`의 `model_reasoning_effort` 수정 → `codex` 재시작, 또는 `codex -c model_reasoning_effort="xhigh"`로 시작 |
 | 3 | 커스텀 에이전트 인식 | "사용 가능한 커스텀 에이전트를 나열해" | cofa-planner/architect/architect-deep/worker/explorer/reviewer/reviewer-terra/verifier/writer 9종 | `.codex/agents`를 `~/.codex/agents`로 복사 |
 | 4 | 서브에이전트 spawn | "커스텀 에이전트 `cofa-explorer`를 spawn해 README의 제목 위치만 찾아 보고해" | cofa-explorer가 돌고 경로:줄이 돌아옴(내장 explorer가 아님을 확인). spawn은 TOML `model`을 런타임 카탈로그와 대조하므로 "Unknown model … Available models: …" 오류가 나면 그 목록을 #15의 입력으로 쓴다 | 모델 불일치면 `$model-routing` 폴백 0, `[agents] enabled` 확인, 안 되면 리더가 직접 |
 | 5 | 모델 선택 | 4의 결과에 사용 모델이 Luna인지(런타임 표시 기준, config 파일 읽기 아님) | `gpt-6-luna` | 모델 404면 `$model-routing` 폴백·캘리브레이션 |
@@ -20,10 +20,11 @@
 | 14 | 중첩 `codex exec` 허용 여부 | 리더 셸에서 `codex exec -s read-only "echo ok"` | 종료 0 | 막히면 #12 우회 불가 → 리더가 핵심 명령 직접 재실행. 로컬(Windows, 0.154) 실측은 종료 1 "failed to initialize in-process app-server client: 액세스가 거부되었습니다 (os error 5)" — 세션 안 중첩 실행이 차단됨. 대회 환경(Linux 추정)에서 재확인 |
 | 15 | 노출 모델·버전 확인 | `/model` 목록을 적는다. Terra가 5.6인지 6.1인지 | 공지대로 6.1 Sol·5.6 Terra·6 Luna | 6.1 Terra면 `docs/model-routing.md` 결정 규칙대로 worker·verifier를 Terra로 전환 |
 | 16 | (선택) 리더 Terra 역구성 실험 | 같은 소과제를 리더 Sol 구성과 `-m gpt-5.6-terra` 리더 구성으로 각 1회 | 토큰·시간·정확도 비교표 | 결과를 decision-log에만 기록, 기본 구성은 바꾸지 않음 |
-| 17 | 스킬 전체 노출 | `/skills` 목록에 kit 스킬 22개가 모두 보이는지 | 22개 전부(초기 목록 예산: 컨텍스트 2% 또는 8,000자 — 현재 설명 합계 약 2,300자) | 일부만 보이면 description을 더 줄이거나 쓰지 않는 스킬 디렉터리를 삭제 |
+| 17 | 스킬 전체 노출 | `/skills` 목록에 kit 스킬 25개가 모두 보이는지 | 25개 전부(초기 목록 예산: 컨텍스트 2% 또는 8,000자 — 현재 설명 합계 약 3,300자) | 일부만 보이면 description을 더 줄이거나 쓰지 않는 스킬 디렉터리를 삭제 |
 | 18 | 서브에이전트 모델 적용 확인 | #4 spawn이 오류 없이 돌면 TOML `model`이 카탈로그에 있는 것 | spawn 성공 = 모델 수락. UI에 서브에이전트 스레드 모델이 표시되면 그 값을 적는다 | 런타임 표시가 없으면 "spawn 성공 여부"만 증거로 기록 |
 | 19 | 풀타임 리허설 2회 | 모의 과제(실무자 역할은 별도 Codex 세션이 맡음)를 225분 시간표대로 처음부터 끝까지, 날짜를 달리해 2회 | 각 단계 실제 소요 시간·토큰, 막힌 지점 목록. 2회차는 1회차 결함 반영 후 | 1회만 가능하면 마감 35분 구간(QA·정리·handoff·cognition-prep)만이라도 따로 1회 |
 | 20 | 확인 문제 모의 | 리허설 산출물로 `$cognition-prep`을 돌린 뒤, 초안을 덮고 사람이 5문항을 3분씩 **AI 없이** 타이핑 | 5문항 모두 약점→파급→다음 검증 3단계로 답함 | 답 못 한 문항 = 가장 약한 지점 → 그 부분의 decision-log·onboard 보강 |
+| 21 | 토큰·비용 측정 | 리허설 끝에 `/status`의 토큰 사용량을 decision-log에 기록. 2회차는 1회차와 비교 | 같은 크기 과제에서 2회차 사용량 ≤ 1회차(비용도 점수 — 평가자 발언) | 늘었으면 AGENTS 2절 낭비 패턴 중 무엇이었는지 적고 다음 리허설에서 하나만 고친다 |
 
 ## 로컬 리허설 메모
 - 로컬 Codex 0.154는 `gpt-6.1-sol`·`gpt-6-luna`를 모를 수 있다. 로컬 시험 때는 `-m gpt-5.6-sol` 등으로 바꿔 돌리고, 모델 ID 차이는 설정 파일만 고치면 된다는 점을 확인한다.
