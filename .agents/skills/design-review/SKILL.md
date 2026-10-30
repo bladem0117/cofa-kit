@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Complex·고위험 과제의 계획이나 설계안을 고정 스냅샷으로 두고 architect(반론·트레이드오프)와 reviewer(기준 충족) 서브에이전트가 서로의 결과를 보지 않고 독립 검토한 뒤, 작성자(리더/planner)만 종합해 수정하는 합의 절차. Use for architecture decisions, migrations, concurrency/process control, public API changes, or when the user asks for a plan review/consensus. Planning only; never implements.
+description: Complex·고위험 계획의 독립 검토 합의(cofa-architect-deep → cofa-reviewer, 같은 스냅샷, 작성자만 종합). Use: architecture decision, plan review, migration.
 ---
 
 # design-review — 독립 검토 기반 설계 합의

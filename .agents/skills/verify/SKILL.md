@@ -1,6 +1,6 @@
 ---
 name: verify
-description: 완료 주장을 신선한 실행 증거로 바꾼다. 기존 테스트 → 빌드 → 직접 명령 → 수동 관찰 순으로 cofa-verifier 서브에이전트가 실행하고 PASS/FAIL/PARTIAL을 판정한다. Use before claiming done, when asked "does it work", or after $execute/$review. Never claim completion without evidence.
+description: 완료 주장을 신선한 실행 증거로 PASS/FAIL 판정(cofa-verifier). 고위험은 별도 read-only 프로세스. Use: verify, does it work, acceptance check.
 ---
 
 # verify — 검증
@@ -13,7 +13,7 @@ description: 완료 주장을 신선한 실행 증거로 바꾼다. 기존 테�
 3. **증거 순서**: 기존 테스트 → 빌드/타입체크 → 기준을 직접 찌르는 명령 → 수동 관찰. 가능한 앞 단계에서 끝낸다.
 4. **연결**: 각 기준에 VERIFIED/PARTIAL/MISSING과 증거(명령·종료 코드·출력 요약)를 붙인다. 변경 전 결과, 기억 속 결과, 요약문은 증거가 아니다.
 5. **판정**: 하나라도 FAIL이면 FAIL. 증거가 없으면 INCOMPLETE. 검증 경로가 없으면 "검증 불가"와 이유.
-6. **기록**: `$evidence-log`에 판정과 명령을 남긴다.
+6. **기록**: `$evidence-log`에 판정과 명령을 남기고, `docs/submission-notes.md` 3절에 "무엇을 · 명령 · 결과 · 누가(리더/cofa-verifier/사람)" 한 행을 추가한다(`$submission-notes`).
 
 ## 고위험 변경의 하드 읽기 전용 검증
 서브에이전트의 "읽기 전용"은 지시문 수준이다(Codex 커스텀 에이전트는 샌드박스를 부모에게서 상속한다). 삭제·프로세스 제어·마이그레이션·보안 변경처럼 verifier가 코드를 건드리면 안 되는 경우에는 검증을 **별도 프로세스**로 돌려 샌드박스 자체를 읽기 전용으로 만든다.

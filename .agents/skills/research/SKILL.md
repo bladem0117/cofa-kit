@@ -1,6 +1,6 @@
 ---
 name: research
-description: 다음 단계가 모르는 사실에 달려 있을 때 질문을 정확히 세우고, 저장소 증거 → 공식 문서 → 다각도 탐색 순으로 조사해 출처 붙은 결과와 미확인을 돌려준다. 구현하지 않는다. Use for unfamiliar SDK/API/spec questions, "how should we", "what does the library do", or any assumption that needs replacing with evidence.
+description: 모르는 SDK·API·규격을 저장소 증거→공식 문서 순으로 조사, 출처·검증/추론 구분. 구현 금지. Use: unfamiliar library, how should we.
 ---
 
 # research — 근거 있는 조사

@@ -77,3 +77,11 @@
 - 재검증: 종료 0, **109초**, 4단계(분류·재현 → 직접 수정 → `cofa-verifier` 독립 검증 → 기록). 분류 Trivial("구현 파일 1개의 자명한 수식 결함"). `sample/stats.py` 짝수 분기 추가, 테스트 파일 불변. `cd sample && python -m unittest -q` → 종료 0, `Ran 7 tests`, `OK`(리더·verifier 양쪽). JSONL: 명령 5회, 파일 변경 3회, `collab_tool_call` 1건(verifier spawn), decision-log 엔트리 1개 추가. usage: 입력 435,101(캐시 407,808) / 출력 3,900(추론 1,520).
 - 한계·잔여: 수정된 함수 위에 결함을 설명하던 옛 주석이 그대로 남음 — Trivial은 `$cleanup`을 건너뛰므로 생기는 공백. `$verify`/Trivial 규칙에 "수정한 줄 주변의 낡은 주석도 같이 고친다" 한 줄을 추가할지 검토. 입력 토큰의 94%가 캐시 읽기(AGENTS·스킬·TOML 반복 로드) — 사용량 평가가 토큰 수 기준이면 kit 문서 길이가 곧 비용이다. 현재 AGENTS 약 70줄·스킬 21개(선택 시에만 본문 로드)는 유지하되 더 늘리지 않는다. 1차 [7] 대비: 540초 미완 → 109초 완료.
 - 비용: 입력 435k(캐시 408k)·출력 3.9k 토큰(실측, turn.completed usage)
+
+### [9] 대회 환경 1차 접속 실측 반영 — 스킬 설명 축소, 사람 기록(submission-notes), Codex 명령 요약 — 2026-10-31
+- 분류/모델: 해당 없음 / 소유자 실측 보고 기반
+- 가설·의도: 소유자가 실제 환경에서 확인한 사실 — (a) GitHub 공개 repo 3개(cofa-kit·포크 2) 인식, kit clone 가능, (b) 스킬이 "몇 개만" 인식, (c) 서브에이전트 모델 적용 여부 확인 어려움, (d) Codex는 거의 최신, 리더 기본 6.1 Sol, `/effort` 명령 없음, (e) 터미널 `npm install` 권한 없음 → OMX 설치 불가, (f) 평가는 마지막에 사람이 "구현한 것 / AI 제안 중 수정한 것"을 수동 기입. 각각에 kit이 답을 갖게 한다.
+- 조치: (b) 22개 스킬 description을 100~130자로 축소(합계 4,900→2,316자, 초기 목록 예산 8,000자/컨텍스트 2%) + 체크리스트 #17(`/skills` 전체 노출). (c) 체크리스트 #2(`/status`로 리더 모델·effort·토큰), #18(spawn 성공=TOML 모델 수락). (d) README "Codex 내장 명령 요약" 표 — effort는 `/model` 픽커에서 선택(공식 문서: 별도 /effort 없음), `/status`·`/compact`·`/plan`·`/goal`·`/review`·`/diff`·`/mention`·`/skills`·`/hooks`·`/permissions`·`/new`·`/fork`·`/resume`, 토큰을 더 쓰는 것(xhigh·/review·/compact 미실행). (e) `omx/`는 옵션 그대로, 플랜 B가 기본임을 재확인(설치 0). (f) `docs/submission-notes.md`(6절 템플릿) + `$submission-notes` 스킬 + AGENTS 1절 7단계 규칙("사용자가 AI 제안을 수정·거부하면 즉시 2절 한 행") + plan/execute/review/verify/crosscheck/submission-check에 행 추가 지시. README "대회 당일 절차" 절.
+- 재검증: 파서 검증 → 스킬 22(디렉터리=name, 설명 40자+, 80줄 이하), TOML 9+config, JSON 2, 제어문자 none, AGENTS 표 ↔ 디렉터리 불일치 none
+- 한계·잔여: 스킬 일부만 인식된 원인이 설명 예산인지 환경 설정인지는 소유자가 `/skills`로 재확인해야 확정. 서브에이전트에 적용된 모델은 런타임 표시가 없을 수 있어 "spawn 성공"을 증거로 쓴다. 사람 기록 기능은 스킬 지시문 수준이라 리더가 빼먹을 수 있음 → 제출 전 `$submission-check` 8단계가 안전망.
+- 비용: 해당 없음

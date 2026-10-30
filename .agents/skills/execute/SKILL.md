@@ -1,6 +1,6 @@
 ---
 name: execute
-description: 승인된 과제를 최소 diff로 구현하고 진행 중 검증한다. 단위가 독립적이면 cofa-worker 서브에이전트를 병렬로 쓴다. Use when the task is understood and the job is to build it: implement, fix, refactor, add tests. Do not self-approve; hand off to $review and $verify.
+description: 승인된 과제를 최소 diff로 구현하고 진행 중 검증. 독립 단위는 cofa-worker 병렬. 자기 승인 금지. Use: implement, fix, refactor, build it.
 ---
 
 # execute — 구현
@@ -15,7 +15,7 @@ description: 승인된 과제를 최소 diff로 구현하고 진행 중 검증�
 5. **진행 중 검증**: 단위마다 타입체크·해당 테스트를 돌린다. 끝에서 한 번 돌리지 않는다.
 6. **통합**: 리더가 모든 단위를 합치고 전체 빌드·테스트를 돌린다. 신선한 출력을 인용한다.
 7. **넘기기**: `$review`(결함)와 `$verify`(증거)로 넘긴다. 작성한 컨텍스트가 스스로 승인하지 않는다.
-8. **기록**: `$evidence-log`로 변경 파일·검증 명령·남은 것을 적는다.
+8. **기록**: `$evidence-log`로 변경 파일·검증 명령·남은 것을 적는다. 구현 단위마다 `docs/submission-notes.md` 1절에 "변경 한 줄 · 파일 · 왜(사용자 요구 기준) · 검증 → 결과 · 엔트리" 한 행을 추가한다. 구현 중 사용자가 "그렇게 말고 이렇게"라고 방향을 바꿨으면 2절에도 한 행(`$submission-notes`).
 
 ## 막혔을 때
 - 증거가 부족한데 결론을 내야 하거나 중대한 반례가 나오면 → 즉시 멈추고 `cofa-architect`에 증상·시도·가설을 넘긴다. 같은 시도는 원인 가설이 바뀌었을 때만 반복한다. 코드를 더 찍어보지 않는다.

@@ -1,6 +1,6 @@
 ---
 name: review
-description: 완성된 변경을 cofa-reviewer 서브에이전트가 요구 준수 → 정확성 → 위험 → 단순화 순으로 검토해 재현된 결함만 심각도순으로 보고한다. Use before shipping, when asked to review, or after $execute. The reviewer never authors the change it judges.
+description: 완성된 변경을 cofa-reviewer가 요구준수→정확성→위험→단순화 순으로 검토, 재현된 결함만 보고. Use: code review, find defects.
 ---
 
 # review — 결함 리뷰
@@ -11,7 +11,7 @@ description: 완성된 변경을 cofa-reviewer 서브에이전트가 요구 준�
 1. **입력 준비**: 요구사항(계획 파일 또는 사용자 지시 원문), 변경본(`git diff` 또는 파일 목록), 반례 후보(깨질 것 같은 입력·상태 2~3개). **작성자의 결론·요약은 넣지 않는다.** 완료 기준: 세 가지가 프롬프트에 들어 있다.
 2. **위임**: `cofa-reviewer` 서브에이전트(읽기 전용)에 1의 입력과 보고 형식을 준다. 고위험 변경이면 `$crosscheck`도 병행한다.
 3. **판정 수신**: 결함은 심각도(높음/중간/낮음)·확신도·파일:줄·실패 시나리오·수정안을 갖춰야 한다. 갖추지 못한 항목은 "열린 질문"으로 내린다.
-4. **처리**: 확신도 높음의 높음·중간 결함은 `$execute`로 고치고 다시 2로 돌아간다(최대 3라운드). 낮음은 기록하고 사용자 판단에 맡긴다.
+4. **처리**: 확신도 높음의 높음·중간 결함은 `$execute`로 고치고 다시 2로 돌아간다(최대 3라운드). 낮음은 기록하고 사용자 판단에 맡긴다. 사용자가 리뷰 지적을 **거부하거나 다른 방식으로 고치기로** 하면 `docs/submission-notes.md` 2절에 "지적 → 사용자 결정 → 이유" 한 행(`$submission-notes`).
 5. **기록**: 라운드별 지적과 반영을 `templates/review-round.md` 형식으로 `docs/decision-log.md`에 남긴다.
 
 ## 규칙

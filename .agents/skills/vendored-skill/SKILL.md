@@ -1,6 +1,6 @@
 ---
 name: vendored-skill
-description: 폴백. kit에 없는 워크플로우가 oh-my-claudecode(OMC)나 oh-my-codex(OMX)에 있을 때, vendor/에 clone한 원본 SKILL.md·에이전트 문서 한 편을 읽고 Claude/OMX 전용 도구를 Codex 도구로 번역해 수행한다. Use as $vendored-skill <omc|omx> <skill-or-agent-name> when no kit skill covers the need. Reads one file per use; never copies large text into the kit.
+description: 폴백: vendor/의 OMC·OMX 원문 스킬 1파일을 읽어 Codex 도구로 번역해 수행. Use: $vendored-skill omc|omx <name> when no kit skill fits.
 ---
 
 # vendored-skill — 원본 스킬 참조 폴백

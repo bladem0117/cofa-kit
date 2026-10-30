@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Scoped 이상 과제를 테스트 가능한 수용 기준과 3~6단계 실행 계획으로 바꾼다. 구현하지 않는다. Use when the user asks to plan, scope, break down, estimate, or when a task touches 2+ files with unclear boundaries. Do not use for one-file obvious fixes.
+description: Scoped 이상 과제의 계획: 수용 기준·3~6단계·검증 계획. 구현 금지. Use: plan, scope, break down a task.
 ---
 
 # plan — 계획
@@ -21,7 +21,7 @@ description: Scoped 이상 과제를 테스트 가능한 수용 기준과 3~6단
 3. **사람에게 물을 것만 묻는다**: 우선순위, 범위 선택, 위험 허용도. 한 번에 한 질문. 답이 없으면 가장 보수적인 가정을 적고 진행한다.
 4. **계획 작성**: Complex이거나 고위험이면 `cofa-planner` 서브에이전트에 위임하고, Scoped면 리더가 직접 쓴다. `templates/plan.md` 형식. 각 단계에 대상·변경·완료 기준·위험. 수용 기준은 "명령 X → 관찰 Y" 형태.
 5. **비판**: Complex이거나 고위험(삭제·프로세스 제어·보안·마이그레이션·공개 API)이면 `cofa-architect` 서브에이전트에 계획 **원문만** 주고 가장 강한 반론과 트레이드오프를 받는다. 작성자의 결론은 주지 않는다. 반론을 반영해 수정한다(최대 2회).
-6. **저장·승인 대기**: `docs/plans/<slug>.md`로 저장하고 "승인 대기"로 표시한다. 사용자가 명시적으로 승인하기 전에는 구현하지 않는다.
+6. **저장·승인 대기**: `docs/plans/<slug>.md`로 저장하고 "승인 대기"로 표시한다. 사용자가 명시적으로 승인하기 전에는 구현하지 않는다. 사용자가 계획의 단계·범위·수용 기준을 **바꾸거나 빼면**, 그 항목을 `docs/submission-notes.md` 2절에 "AI 제안 → 사용자 결정 → 바꾼 내용 → 이유" 한 행으로 적는다(`$submission-notes`). 승인만 했으면 적지 않는다.
 
 ## 규칙
 - 3~6단계. 30개 세부 단계도, 2개 모호한 지시도 아니다.

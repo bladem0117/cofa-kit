@@ -1,6 +1,6 @@
 ---
 name: remember
-description: 세션에서 발견한 재사용 가능한 지식을 알맞은 저장소(docs/notepad.md 단기 메모, docs/decision-log.md 결정 기록, AGENTS.md 규칙 승격)로 분류해 저장한다. Use when the user says remember/기억해, or when a non-obvious fact, gotcha, or preference surfaces that the next session would need.
+description: 세션 지식을 notepad·decision-log·AGENTS 중 알맞은 곳에 보존. Use: remember, 기억해, non-obvious fact or preference.
 ---
 
 # remember — 지식 보존

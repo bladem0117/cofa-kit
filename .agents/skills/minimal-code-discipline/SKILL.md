@@ -1,6 +1,6 @@
 ---
 name: minimal-code-discipline
-description: 코드 변경을 쓰기 전·중에 적용하는 YAGNI 사다리. 존재 필요 → 재사용 → 의존성 사다리 → 최단 올바른 diff, 그리고 절대 줄이면 안 되는 비협상 항목. Use when implementing or planning any change, when a diff is growing beyond the request, or when the user asks for minimal/lean/smallest change. Pairs with $execute and the worker agent.
+description: 코드 쓰기 전 YAGNI 사다리(존재→재사용→의존성→최단 diff)와 비협상 항목. Use: minimal change, lean diff, before coding.
 ---
 
 # minimal-code-discipline — 최소 코드 규율

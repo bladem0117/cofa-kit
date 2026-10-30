@@ -1,6 +1,6 @@
 ---
 name: onboard
-description: 낯선 저장소에 손대기 전 1쪽 지도를 만든다. 진입점·빌드/테스트 명령(실제 실행한 기준선)·모듈 그래프·관례·위험 지점을 증거/추론/미확인으로 구분해 docs/onboard.md에 남긴다. 읽기 전용. Use at the start of any task in an unfamiliar codebase, or when asked "analyze", "how does X work", "why does", "what's causing" before any change is proposed.
+description: 낯선 저장소의 1쪽 지도: 기준선 실행·진입점·모듈·관례·위험을 증거/추론/미확인으로. 읽기 전용. Use: new codebase, analyze, how does X work.
 ---
 
 # onboard — 저장소 지도 (읽기 전용)

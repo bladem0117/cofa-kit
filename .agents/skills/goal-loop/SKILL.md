@@ -1,6 +1,6 @@
 ---
 name: goal-loop
-description: 장시간·다단계 과제를 Codex /goal로 돌릴 때의 규칙. 목표 문장에 완료 기준·토큰 예산·반복 상한·종료 조건을 함께 적고, 완료 판단을 현재 변경본·명령·종료 코드에 연결한다. Use when a task needs autonomous continuation across many turns (ralph/ultragoal-style loops). Do not use for tasks a single focused pass can finish.
+description: 장시간 과제를 /goal로 돌릴 때 완료 기준·토큰 예산·반복 상한·종료 조건 규칙. Use: autonomous continuation, long multi-step task.
 ---
 
 # goal-loop — 상한 있는 자율 루프

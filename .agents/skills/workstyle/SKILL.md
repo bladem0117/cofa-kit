@@ -1,6 +1,6 @@
 ---
 name: workstyle
-description: 이 저장소 소유자의 작업 방식. 증거 우선, 작성·승인 분리, 고위험은 다른 모델 교차검증, fail-closed 안전 규칙, 프로세스·백그라운드 안전, git 규칙, 한국어 보고 형식, 파일 편집 함정. Use at session start, when unsure how to report or how cautious to be, or when the user says "내 방식대로".
+description: 소유자 작업 방식: 증거 우선, 작성·승인 분리, 고위험 교차검증, fail-closed, 프로세스·git 규칙, 한국어 보고. Use: session start, how to report.
 ---
 
 # workstyle — 작업 방식

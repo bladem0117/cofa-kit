@@ -60,6 +60,40 @@ omx/                      플랜 A: OMX 0.21.40 핀 + Sol/Terra/Luna 덮어쓰�
 - **루프에는 상한이 있다.** `/goal`에 토큰 예산·반복 상한·종료 조건을 함께 적는다.
 - **확인 불가 시 삭제하지 않는다.**
 
+## 대회 당일 절차 (과제 저장소 루트에서)
+
+```bash
+git clone --depth 1 https://github.com/bladem0117/cofa-kit /tmp/kit
+cp -r /tmp/kit/.codex /tmp/kit/.agents /tmp/kit/docs /tmp/kit/templates /tmp/kit/scripts .
+# 과제에 AGENTS.md가 이미 있으면 덮어쓰지 말고 이어 붙인다
+[ -f AGENTS.md ] && { printf '\n\n' >> AGENTS.md; cat /tmp/kit/AGENTS.md >> AGENTS.md; } || cp /tmp/kit/AGENTS.md .
+bash scripts/probe.sh     # 확인만. Codex 업데이트·npm 전역 설치 금지(권한도 없음)
+codex                     # "프로젝트 신뢰" 승인 → .codex/ 로드
+```
+
+Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토큰) → `/model`(노출 모델·버전 확인, 필요 시 effort 선택) → `/skills`(22개 노출 확인) → "커스텀 에이전트 `cofa-explorer`를 spawn해 README 제목 위치를 경로:줄로 보고해"(spawn 성공 = TOML 모델 수락; `Unknown model … Available models: …`면 그 목록으로 `.codex/agents/*.toml` 수정) → 결과를 `docs/decision-log.md` 엔트리 1개로. 이후는 AGENTS.md 1절 루프. kit 파일은 제출 시 **별도 커밋**(`chore(harness): …`)으로 넣어 과제 diff와 분리한다.
+
+## Codex 내장 명령 요약 (Claude Code 사용자용)
+
+| 하고 싶은 것 | Codex | 비고 |
+|---|---|---|
+| 모델·reasoning effort 바꾸기 | `/model` → 모델 선택 → effort(low/medium/high/xhigh) 선택 | **`/effort` 명령은 없다.** 시작 시 `codex -c model_reasoning_effort="xhigh"`로도 가능. kit은 config/TOML로 이미 지정 |
+| 토큰 사용량·컨텍스트 확인 | `/status` | 모델·승인 정책·쓰기 가능 루트·토큰 사용량 |
+| 컨텍스트 줄이기 | `/compact` | 긴 세션에서 토큰 절약. 요약 후 진행 |
+| 계획 모드 | `/plan <목표>` | 구현 전에 계획만. kit의 `$plan`은 수용 기준·승인 대기까지 |
+| 지속 목표 | `/goal` | 토큰 예산·자동 계속. kit의 `$goal-loop` 형식으로 등록 |
+| 작업 트리 리뷰 | `/review` | 토큰을 더 쓴다. kit은 `$review`(cofa-reviewer) 사용 |
+| 변경 보기 | `/diff` | 스테이징·미스테이징·미추적 |
+| 파일 첨부 | `/mention <path>` | 다음 턴에서 직접 참조 |
+| 스킬·훅·MCP | `/skills`, `/hooks`, `/mcp` | 훅은 여기서 신뢰 승인 |
+| 승인 정책 | `/permissions` | Read Only / Auto 등 |
+| 새 대화·복제·재개 | `/new`, `/fork`, `/resume` | `/clear`는 터미널까지 초기화 |
+| 토큰을 더 태우는 것 | 높은 effort(xhigh), `/review`, `/compact` 미실행 | Claude의 ultrathink 같은 키워드는 없고 effort가 유일한 레버 |
+
+## 사람 기록 (제출 시 직접 써야 하는 것)
+
+평가 환경은 마지막에 사람이 "내가 구현한 것"과 "AI 제안 중 내가 수정한 것"을 적게 한다. `docs/submission-notes.md`가 그 초안이다. `$execute`가 구현 단위마다 1절에, 사용자가 AI 제안을 수정·거부하면 그 자리에서 2절에, `$verify`가 3절에 행을 쌓고, 제출 전 `$submission-notes`가 6절 최종 문장 초안을 만든다. 사람은 읽고 고치기만 한다.
+
 ## 참고한 공개 자료
 
 구조와 역할 분리는 [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)(MIT)와 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)(MIT)의 에이전트·스킬 설계를 참고해 Codex 네이티브 선언으로 다시 썼다. 원문을 복사하지 않았다. 구체적으로 참고한 것: OMC 스킬 execute·review·verify·research·remember·ralplan·minimal-code-discipline·ai-slop-cleaner, OMC 에이전트 planner·architect·executor·verifier·code-reviewer·explore·writer·debugger·tracer·test-engineer, OMX 스킬 analyze·ultraqa·ultragoal·plan·git-master와 OMX 에이전트 정의(frontier/standard/fast 계층). 폴백으로 원문이 필요할 때는 `vendor/`에 태그 고정 clone 후 `$vendored-skill`로 번역해 쓴다. Codex 기능은 [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents.md), [Agent Skills](https://developers.openai.com/codex/skills.md), [Config basics](https://developers.openai.com/codex/config-basic), [Using Goals](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) 문서를 따른다.

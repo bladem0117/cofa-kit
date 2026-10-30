@@ -1,6 +1,6 @@
 ---
 name: git-hygiene
-description: 단계마다 논리 단위로 원자 커밋하고, 메시지에 이유·검증 명령·decision-log 엔트리 번호를 연결한다. 커밋 전 비밀값·제어문자·임시 파일·디버그 출력·skip 테스트를 스캔한다. 현재 브랜치에만, 새 브랜치·push는 승인 시에만. Use at the end of each stage, before submission, or when asked to commit.
+description: 단계별 원자 커밋, 메시지에 이유·검증·엔트리 번호, 커밋 전 스캔. 현재 브랜치만. Use: commit, before submission.
 ---
 
 # git-hygiene — 작업 이력을 증거로

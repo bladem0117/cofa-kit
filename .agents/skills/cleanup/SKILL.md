@@ -1,6 +1,6 @@
 ---
 name: cleanup
-description: 이번 작업에서 바뀐 파일만 대상으로, 동작을 테스트로 고정한 뒤 삭제 우선·한 번에 한 냄새씩 AI 흔적(죽은 코드·디버그 출력·중복 헬퍼·불필요한 래퍼·과잉 주석·추측적 추상화)을 치운다. Use after implementation and before submission, or when asked to deslop/simplify/clean up. Behavior-preserving only.
+description: 변경 파일만 동작 보존하며 AI 흔적 정리(죽은 코드·디버그 출력·중복·과잉 주석). Use: deslop, simplify, before submission.
 ---
 
 # cleanup — 변경 파일 정리 (동작 보존)

@@ -1,6 +1,6 @@
 ---
 name: model-routing
-description: 역할별 모델·reasoning effort 선택 규칙, 상향·하향 조건, Terra·Luna의 한정 용도, 모델 불가(404)·레이트리밋 폴백, 새 환경 첫 10분 캘리브레이션. Use when choosing an agent for a task, when a model is unavailable or rate-limited, or at the start of a session in a new environment. Model IDs live only in .codex/config.toml and .codex/agents/*.toml.
+description: 역할별 모델·effort 규칙, Terra·Luna 한정 용도, 404·레이트리밋·spawn 모델 검증 폴백, 캘리브레이션. Use: choosing a model, model unavailable, new environment.
 ---
 
 # model-routing — 모델 라우팅

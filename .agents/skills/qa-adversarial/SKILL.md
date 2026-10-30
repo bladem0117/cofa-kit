@@ -1,6 +1,6 @@
 ---
 name: qa-adversarial
-description: 실행 가능한 동작에 적대적 시나리오(잘못된 입력·중단·오래된 상태·시간 초과·거짓 성공 출력)를 설계해 돌리고, 결함은 고치고, 임시 하네스를 정리하는 상한 있는 QA 사이클. Use before submission after $verify passes, or when asked for e2e/robustness/hostile-input testing. Max 3 cycles; never destructive.
+description: 제출 전 적대적 시나리오 QA(잘못된 입력·중단·오래된 상태·거짓 성공), 상한 3사이클, 파괴 금지. Use: e2e, robustness, hostile input.
 ---
 
 # qa-adversarial — 적대적 QA (상한 3사이클)

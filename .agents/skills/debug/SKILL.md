@@ -1,6 +1,6 @@
 ---
 name: debug
-description: 버그·실패 테스트·빌드 오류를 재현 → 관찰 → 경쟁 가설(찬성·반대 증거) → 구별 프로브 → 근본 원인 → 최소 수정 → 회귀 테스트 순으로 다룬다. 가설 3회 실패 시 cofa-architect로 에스컬레이션. Use for failing tests, stack traces, build/type errors, "why does this break", regressions. Not for feature work or refactoring.
+description: 재현→경쟁 가설→구별 프로브→근본 원인→최소 수정→회귀 테스트. 반례 시 cofa-architect 상향. Use: failing test, stack trace, build error.
 ---
 
 # debug — 근본 원인 추적

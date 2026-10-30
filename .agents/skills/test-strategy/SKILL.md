@@ -1,6 +1,6 @@
 ---
 name: test-strategy
-description: 수용 기준을 테스트 목록으로 바꾸고(정상·경계·오류 경로·순서), 새 동작은 RED→GREEN→REFACTOR로 테스트 먼저 쓰며, 커버리지 공백과 불안정 테스트를 위험도와 함께 다룬다. Use before or during implementation, when asked for tests/TDD/coverage, or when a test is flaky. Pairs with $execute and the worker agent.
+description: 수용 기준→테스트 목록(경계·오류·순서), RED→GREEN→REFACTOR, 커버리지 공백, 불안정 테스트. Use: tests, TDD, coverage, flaky.
 ---
 
 # test-strategy — 테스트 전략과 TDD

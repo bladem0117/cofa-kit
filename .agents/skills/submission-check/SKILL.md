@@ -1,6 +1,6 @@
 ---
 name: submission-check
-description: 제출 직전 체크리스트. 테스트·빌드 신선 실행, 비밀값·개인정보 스캔, decision-log 완결성, 미완 표식(TODO/skip/stub) 제거, 사용 자료 출처, 공개 저장소 상태를 확인하고 결과를 표로 보고한다. Use right before submitting or declaring the task complete.
+description: 제출 전 체크리스트: 신선한 테스트·미완 표식·비밀값·decision-log 완결·출처·저장소 상태. Use: before submitting or declaring done.
 ---
 
 # submission-check — 제출 전 점검
@@ -15,7 +15,8 @@ description: 제출 직전 체크리스트. 테스트·빌드 신선 실행, 비
 5. **요구사항 대조**: 원래 과제 문장을 다시 읽고 수용 기준 표의 상태가 모두 VERIFIED인지. PARTIAL/MISSING은 "알려진 한계"로 명시.
 6. **출처**: 참고한 공개 자료(저장소·문서) 목록과, 결과물이 외부 자료의 통째 복사가 아님을 한 줄로.
 7. **저장소 상태**: 사용한 공개 저장소가 공개 상태인지, 작업 트리에 의도치 않은 파일(임시·로그·`.omx/`)이 없는지 `git status`로 확인.
-8. **최종 요약 작성**: 아래 형식으로 사용자에게 보고한다.
+8. **사람 기록 정리**: `$submission-notes` 절차 5~7을 실행해 `docs/submission-notes.md` 6절(내가 구현한 것 / AI 제안 중 내가 수정한 것) 초안을 완성하고 사용자에게 보여 준다. 이 초안이 평가 환경의 수동 기입란에 그대로 들어간다.
+9. **최종 요약 작성**: 아래 형식으로 사용자에게 보고한다.
 
 ## 보고 형식
 

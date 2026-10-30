@@ -1,6 +1,6 @@
 ---
 name: evidence-log
-description: 단계가 끝날 때마다 결정·근거·증거·잔여 한계를 docs/decision-log.md에 "가설 → 조치 → 재검증 → 한계" 단위로 기록한다. 사후 Q&A와 과정 평가(Intent/Cognition)의 재료. Use after plan, execute, review, verify, crosscheck, or whenever a non-obvious decision is made.
+description: 단계별 결정·증거·한계를 docs/decision-log.md에 가설→조치→재검증→한계로 기록. 크기별 엔트리 수. Use: after each stage, any non-obvious decision.
 ---
 
 # evidence-log — 결정·증거 기록
