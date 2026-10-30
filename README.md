@@ -42,6 +42,7 @@ AGENTS.md                 운영 규칙(항상 적용). 작업 루프·라우팅
                           + 풀이 7(onboard·debug·test-strategy·research·qa-adversarial·cleanup·git-hygiene) + 폴백 1(vendored-skill). $이름으로 호출, description으로 자동 선택
 vendor/                   폴백용 원본(OMC·OMX) clone 위치. README만 추적, 내용물은 환경에서 태그 고정 clone
 optional/                 상기 전용 hook(SessionStart 컨텍스트 주입, Stop 검증 상기). 차단 없음. 복사 후 /hooks 승인
+docs/playbook.md          **언제 무엇을 치나** — 225분 시간표·분기표·안 쳐도 되는 스킬. 대회 중엔 이것만 열어 둔다
 docs/model-routing.md     라우팅 근거 수치와 출처
 docs/decision-log.md      결정·증거·한계 기록(사후 Q&A 재료)
 docs/notepad.md           세션 간 작업 메모
