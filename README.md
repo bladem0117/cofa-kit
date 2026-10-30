@@ -88,7 +88,8 @@ Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토�
 | 스킬·훅·MCP | `/skills`, `/hooks`, `/mcp` | 훅은 여기서 신뢰 승인 |
 | 승인 정책 | `/permissions` | Read Only / Auto 등 |
 | 새 대화·복제·재개 | `/new`, `/fork`, `/resume` | `/clear`는 터미널까지 초기화 |
-| 토큰을 더 태우는 것 | 높은 effort(xhigh), `/review`, `/compact` 미실행 | Claude의 ultrathink 같은 키워드는 없고 effort가 유일한 레버 |
+| 속도 티어 | `/fast on` / `/fast off` / `/fast status` | 같은 모델·같은 품질, 토큰 생성 약 1.5배 빠름, **크레딧 2~2.5배 소비**. 사용량이 평가되므로 기본 off. 마감 직전 벽시계가 모자랄 때만 |
+| 토큰을 더 태우는 것 | 높은 effort(xhigh), `/fast`, `/review`, `/compact` 미실행 | Claude의 ultrathink 같은 키워드는 없고 effort가 유일한 품질 레버. `/fast`는 품질이 아니라 속도만 산다 |
 
 ## 사람 기록 (제출 시 직접 써야 하는 것)
 
