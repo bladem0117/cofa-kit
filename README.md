@@ -38,8 +38,10 @@ AGENTS.md                 운영 규칙(항상 적용). 작업 루프·라우팅
 .codex/config.toml        리더 모델(Sol high), 서브에이전트 기본값(Sol medium), /goal 활성화. 모델 배치의 단일 진실원
 .codex/agents/*.toml      cofa-planner·cofa-architect·cofa-reviewer·cofa-verifier(Sol high) / cofa-architect-deep(Sol xhigh) / cofa-worker(Sol medium)
                           / cofa-reviewer-terra(Terra, 교차 리뷰 전용) / cofa-explorer·cofa-writer(Luna low, 위치 찾기·초안만)
-.agents/skills/*/SKILL.md 21개 스킬. 과정 13(plan·design-review·execute·minimal-code-discipline·review·verify·crosscheck·goal-loop·model-routing·evidence-log·remember·submission-check·workstyle)
-                          + 풀이 7(onboard·debug·test-strategy·research·qa-adversarial·cleanup·git-hygiene) + 폴백 1(vendored-skill). $이름으로 호출, description으로 자동 선택
+.agents/skills/*/SKILL.md 27개 스킬. 진입 1(go) + 과정 13(plan·design-review·execute·minimal-code-discipline·review·verify·crosscheck·goal-loop·model-routing·evidence-log·remember·submission-check·workstyle)
+                          + 풀이 8(onboard·optimize·debug·test-strategy·research·qa-adversarial·cleanup·git-hygiene) + 대회 4(stakeholder-interview·cognition-prep·handoff·submission-notes) + 폴백 1(vendored-skill). $이름으로 호출, description으로 자동 선택
+docs/domain-fab.md        반도체 현장 어휘·유형→문제군 표·인터뷰 질문 어휘(결선 대비, 답은 넣지 않음)
+docs/reference-repos.md   최적화 도구·참조 저장소, 가용성 확인 명령, 폴백 순위
 vendor/                   폴백용 원본(OMC·OMX) clone 위치. README만 추적, 내용물은 환경에서 태그 고정 clone
 optional/                 상기 전용 hook(SessionStart 컨텍스트 주입, Stop 검증 상기). 차단 없음. 복사 후 /hooks 승인
 docs/playbook.md          **언제 무엇을 치나** — 180분 시간표·분기표·안 쳐도 되는 스킬. 대회 중엔 이것만 열어 둔다
@@ -73,7 +75,7 @@ bash scripts/probe.sh     # 확인만. Codex 업데이트·npm 전역 설치 금
 codex                     # "프로젝트 신뢰" 승인 → .codex/ 로드
 ```
 
-Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토큰) → `/model`(노출 모델·버전 확인, 필요 시 effort 선택) → `/skills`(25개 노출 확인) → "커스텀 에이전트 `cofa-explorer`를 spawn해 README 제목 위치를 경로:줄로 보고해"(spawn 성공 = TOML 모델 수락; `Unknown model … Available models: …`면 그 목록으로 `.codex/agents/*.toml` 수정) → 결과를 `docs/decision-log.md` 엔트리 1개로. 이후는 AGENTS.md 1절 루프. **스킬명이 기억 안 나면 `$go <하고 싶은 것>` 하나만 친다**(파일 상태로 단계를 감지해 알맞은 스킬로 넘긴다). kit 파일은 제출 시 **별도 커밋**(`chore(harness): …`)으로 넣어 과제 diff와 분리한다.
+Codex 안에서 10분 캘리브레이션: `/status`(리더 모델·effort·토큰) → `/model`(노출 모델·버전 확인, 필요 시 effort 선택) → `/skills`(27개 노출 확인) → 솔버 가용성 확인 1줄(`docs/reference-repos.md`) → "커스텀 에이전트 `cofa-explorer`를 spawn해 README 제목 위치를 경로:줄로 보고해"(spawn 성공 = TOML 모델 수락; `Unknown model … Available models: …`면 그 목록으로 `.codex/agents/*.toml` 수정) → 결과를 `docs/decision-log.md` 엔트리 1개로. 이후는 AGENTS.md 1절 루프. **스킬명이 기억 안 나면 `$go <하고 싶은 것>` 하나만 친다**(파일 상태로 단계를 감지해 알맞은 스킬로 넘긴다). kit 파일은 제출 시 **별도 커밋**(`chore(harness): …`)으로 넣어 과제 diff와 분리한다.
 
 ## Codex 내장 명령 요약 (Claude Code 사용자용)
 

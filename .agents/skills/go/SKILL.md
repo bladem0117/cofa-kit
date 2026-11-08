@@ -16,6 +16,7 @@ description: 스킬명을 몰라도 되는 단일 진입점. 파일 상태로 �
 | `docs/agreement.md` 없음(실무자 AI가 있거나 과제가 열려 있음) | 발굴·합의 |
 | 합의문 있음, `docs/plans/`에 계획 없음 | 지도·계획 |
 | 계획 상태 "승인 대기" | 사용자 승인 필요 — 멈춘다 |
+| 계획에 배정·배치·스케줄·경로 로직이 있는데 "모형" 절·"방법 선택" 행이 비어 있음 | 방법 선택(`$optimize`) |
 | 계획 승인됨, 기준을 세우는 과제인데 합의문 3-1절 비어 있음 | 2차 왕복 |
 | 계획 승인됨, `docs/submission-notes.md` 1절에 미완 단위 | 구현 |
 | 변경 있음, `docs/verification.md` 없음 또는 마지막 블록이 현재 변경 이전 | 리뷰·검증 |
@@ -32,7 +33,8 @@ description: 스킬명을 몰라도 되는 단일 진입점. 파일 상태로 �
 | 입장 | (스킬 없음) `/status`·`/skills`·spawn 테스트 → 엔트리 1 | |
 | 발굴·합의 | `$stakeholder-interview` | 질문은 사용자가 우측 채팅에 직접 |
 | 지도·계획 | `$onboard`(기존 코드) → `$plan` | 갈림길·고위험은 `$design-review` |
-| 2차 왕복 | `$stakeholder-interview`의 2차 왕복 절 | 방법 선택 행은 사용자가 채운다 |
+| 방법 선택 | `$optimize` | 사다리에서 단은 사용자가 고른다. 분석형(통계·이상감지)이면 건너뛴다 |
+| 2차 왕복 | `$stakeholder-interview`의 2차 왕복 절 | 2~3안은 `$optimize` 출력에서 |
 | 구현 | `$execute` | 깨지면 `$debug`, 모르는 API는 `$research` |
 | 리뷰·검증 | `$review` → `$verify` | 고위험은 `$crosscheck` |
 | 마감 | `$qa-adversarial`(여유 시) → `$cleanup` → `$verify` 재실행 → `$git-hygiene` → `$handoff` → `$cognition-prep` → `$submission-check` | 15분 미만이면 마지막 둘만 |
