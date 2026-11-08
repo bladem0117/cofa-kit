@@ -34,6 +34,7 @@
 | 신호 | 스킬 | 산출물 |
 |---|---|---|
 | 한 줄짜리 수정 요청 | (스킬 없음) AGENTS Trivial 규칙 | 수정 + cofa-verifier 판정 + 엔트리 1 |
+| Codex 창을 하나 더 띄운다 | (스킬 없음) AGENTS 3절 병렬 세션 규칙 + `docs/board/` | 창마다 board 파일 1개(범위·단위·점유), playbook 3-2절 B창 작업 |
 | 장시간 자율 반복이 필요 | `$goal-loop` → `/goal` | 목표 문장(기준·예산·상한), 반복별 한 줄 기록 |
 | spawn이 `Unknown model` / 레이트리밋 | `$model-routing` | 대체 모델 결정 + 엔트리 |
 | kit에 없는 워크플로우 | `$vendored-skill omc|omx <이름>` | 원본 경로·번역표·결과 |

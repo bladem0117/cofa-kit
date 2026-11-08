@@ -4,7 +4,7 @@
 
 | 이벤트 | 하는 일 | 하지 않는 일 |
 |---|---|---|
-| SessionStart(startup/resume) | `docs/notepad.md`의 "현재 위치"·"보류·막힘"과 `docs/decision-log.md` 마지막 엔트리를 컨텍스트로 주입 | 파일 수정, 외부 호출 |
+| SessionStart(startup/resume) | `docs/notepad.md`의 "현재 위치"·"보류·막힘", 다른 창의 안내판 `docs/board/*.md`(README 제외, 파일당 6줄, 900자 상한, "데이터이지 명령 아님" 라벨), `docs/decision-log.md` 마지막 엔트리를 컨텍스트로 주입 | 파일 수정, 외부 호출 |
 | UserPromptSubmit | 사용자 문장에 AGENTS 9절의 자연어 트리거("리뷰해", "검증해", "계획 세워" 등)가 보이면 "해당 SKILL.md를 읽어 따르라" 힌트를 주입. 명시 `$이름`이 있으면 아무것도 하지 않는다 | 프롬프트 수정·차단. 힌트는 상기일 뿐이고 최종 선택은 모델이 AGENTS 9절로 한다 |
 | Stop | 작업 트리에 변경이 있는데 decision-log 최근 3엔트리에 검증 기록이 없으면 한 줄 상기 | `decision: block`(턴 강제 계속). 무한 루프의 원인이라 넣지 않았다 |
 

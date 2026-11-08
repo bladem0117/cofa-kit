@@ -14,3 +14,6 @@ scratch/
 # 원본 스킬 저장소(폴백용)는 환경에서 clone — README만 추적
 vendor/*
 !vendor/README.md
+# 병렬 세션 안내판(docs/board/)은 휘발 상태 — README만 추적
+docs/board/*.md
+!docs/board/README.md

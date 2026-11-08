@@ -42,6 +42,7 @@ AGENTS.md                 운영 규칙(항상 적용). 작업 루프·라우팅
                           + 풀이 8(onboard·optimize·debug·test-strategy·research·qa-adversarial·cleanup·git-hygiene) + 대회 4(stakeholder-interview·cognition-prep·handoff·submission-notes) + 폴백 1(vendored-skill). $이름으로 호출, description으로 자동 선택
 docs/domain-fab.md        반도체 현장 어휘·유형→문제군 표·인터뷰 질문 어휘(결선 대비, 답은 넣지 않음)
 docs/reference-repos.md   최적화 도구·참조 저장소, 가용성 확인 명령, 폴백 순위
+docs/board/               Codex 창 여러 개일 때 창별 현재 상태 안내판(6줄, 커밋 안 함). 규칙은 AGENTS 3절, B창 작업은 playbook 3-2절
 vendor/                   폴백용 원본(OMC·OMX) clone 위치. README만 추적, 내용물은 환경에서 태그 고정 clone
 optional/                 상기 전용 hook(SessionStart 컨텍스트 주입, Stop 검증 상기). 차단 없음. 복사 후 /hooks 승인
 docs/playbook.md          **언제 무엇을 치나** — 180분 시간표·분기표·안 쳐도 되는 스킬. 대회 중엔 이것만 열어 둔다
