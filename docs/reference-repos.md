@@ -5,6 +5,8 @@
 ## 가용성 확인 — 입장 캘리브레이션에 한 줄 추가
 ```bash
 python -c "import scipy; print('scipy', scipy.__version__)"; python -c "import ortools; print('ortools ok')"; python -c "import pulp; print('pulp ok')"; python -c "import simpy; print('simpy ok')"
+# 분석·웹 라이브러리와 설치·패키징 도구까지 한 번에(계획의 기술 선택 표를 채우기 전에 본다). False·오류가 나온 것은 쓰지 않는 쪽으로 계획한다
+python -c "import importlib.util as u; print({m: bool(u.find_spec(m)) for m in ['numpy','pandas','scipy','sklearn','statsmodels','matplotlib','flask','fastapi','uvicorn','streamlit','ortools','pulp','simpy']})"; pip --version; docker --version; docker info --format '{{.ServerVersion}}' 2>&1 | head -1; node -v
 ```
 
 ## 표

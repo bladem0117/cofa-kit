@@ -37,7 +37,7 @@ description: 스킬명을 몰라도 되는 단일 진입점. 파일 상태로 �
 | 2차 왕복 | `$stakeholder-interview`의 2차 왕복 절 | 2~3안은 `$optimize` 출력에서 |
 | 구현 | `$execute` | 깨지면 `$debug`, 모르는 API는 `$research` |
 | 리뷰·검증 | `$review` → `$verify` | 고위험은 `$crosscheck` |
-| 마감 | `$qa-adversarial`(여유 시) → `$cleanup` → `$verify` 재실행 → `$git-hygiene` → `$handoff` → `$cognition-prep` → `$submission-check` | 15분 미만이면 마지막 둘만 |
+| 마감 | `$qa-adversarial`(여유 시) → `$cleanup` → `$verify` 재실행 → `$git-hygiene` → `$handoff` → `$cognition-prep` → `$submission-check` | 15분 미만이면 커밋 한 줄 + 마지막 둘만 |
 | 어디서든 컨텍스트 60% 초과 | `$handoff` → `/new` | |
 
 ## 규칙
