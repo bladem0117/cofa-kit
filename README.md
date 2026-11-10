@@ -70,6 +70,9 @@ omx/                      플랜 A: OMX 0.21.40 핀 + Sol/Terra/Luna 덮어쓰�
 ```bash
 git clone --depth 1 https://github.com/bladem0117/cofa-kit /tmp/kit
 cp -r /tmp/kit/.codex /tmp/kit/.agents /tmp/kit/docs /tmp/kit/templates /tmp/kit/scripts .
+# kit 개발 이력(약 44KB)을 과제 기록과 분리한다. 읽을 때마다 토큰이 들고 kit 결정을 과제 결정으로 오인한다
+mv docs/decision-log.md docs/kit-decision-log.md
+printf '# decision-log\n\n결정·근거·증거·잔여 한계의 시간순 기록. 형식은 .agents/skills/evidence-log/SKILL.md. kit 자체의 이력은 docs/kit-decision-log.md(읽지 않는다).\n\n---\n' > docs/decision-log.md
 # 과제에 AGENTS.md가 이미 있으면 덮어쓰지 말고 이어 붙인다
 [ -f AGENTS.md ] && { printf '\n\n' >> AGENTS.md; cat /tmp/kit/AGENTS.md >> AGENTS.md; } || cp /tmp/kit/AGENTS.md .
 bash scripts/probe.sh     # 확인만. Codex 업데이트·npm 전역 설치 금지(권한도 없음)
