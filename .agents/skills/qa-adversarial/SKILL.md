@@ -1,6 +1,6 @@
 ---
 name: qa-adversarial
-description: 제출 전 적대적 시나리오 QA(잘못된 입력·중단·오래된 상태·거짓 성공), 상한 3사이클, 파괴 금지, 수정 시 verify 재진입. 트리거: "엣지 케이스 점검", "이상 입력 넣어봐", "깨뜨려봐". Use: robustness.
+description: '제출 전 적대적 시나리오 QA(잘못된 입력·중단·오래된 상태·거짓 성공), 상한 3사이클, 파괴 금지, 수정 시 verify 재진입. 트리거: "엣지 케이스 점검", "이상 입력 넣어봐", "깨뜨려봐". Use: robustness.'
 ---
 
 # qa-adversarial — 적대적 QA (상한 3사이클)

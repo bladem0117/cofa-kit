@@ -1,6 +1,6 @@
 ---
 name: go
-description: 스킬명을 몰라도 되는 단일 진입점. 파일 상태로 현재 단계를 감지하고 "$go <요청>"을 AGENTS 9절 표로 라우팅해 해당 스킬을 읽어 실행. 트리거: "$go", "다음 뭐 해", "이어서 해". Use: entry point, dispatcher.
+description: '스킬명을 몰라도 되는 단일 진입점. 파일 상태로 현재 단계를 감지하고 "$go <요청>"을 AGENTS 9절 표로 라우팅해 해당 스킬을 읽어 실행. 트리거: "$go", "다음 뭐 해", "이어서 해". Use: entry point, dispatcher.'
 ---
 
 # go — 단일 진입점

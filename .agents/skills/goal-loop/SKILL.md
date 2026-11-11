@@ -1,6 +1,6 @@
 ---
 name: goal-loop
-description: 장시간 과제를 /goal로 돌릴 때 완료 기준·토큰 예산·반복 상한·잔여 시간 규칙. /goal 가용성 먼저 확인. 트리거: "끝까지 진행해", "알아서 계속해". Use: autonomous continuation.
+description: '장시간 과제를 /goal로 돌릴 때 완료 기준·토큰 예산·반복 상한·잔여 시간 규칙. /goal 가용성 먼저 확인. 트리거: "끝까지 진행해", "알아서 계속해". Use: autonomous continuation.'
 ---
 
 # goal-loop — 상한 있는 자율 루프

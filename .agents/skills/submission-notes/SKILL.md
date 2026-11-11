@@ -1,6 +1,6 @@
 ---
 name: submission-notes
-description: 제출용 사람 기록 초안(docs/submission-notes.md): AI 구현·사용자 지시/승인·직접 수정을 구분, AI 제안 중 수정·거부한 것, 검증, 한계. 트리거: "내가 한 일 정리", "AI 제안 수정 내역". Use: before submitting.
+description: '제출용 사람 기록 초안(docs/submission-notes.md): AI 구현·사용자 지시/승인·직접 수정을 구분, AI 제안 중 수정·거부한 것, 검증, 한계. 트리거: "내가 한 일 정리", "AI 제안 수정 내역". Use: before submitting.'
 ---
 
 # submission-notes — 제출용 사람 기록

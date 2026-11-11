@@ -1,6 +1,6 @@
 ---
 name: submission-check
-description: 제출 전 체크리스트: 신선한 테스트·미완 표식·비밀값·기록 완결·출처·저장소 상태·사람 기록. PARTIAL은 한계 명시 시에만 제출 가능. 트리거: "제출해도 돼?", "마감 점검". Use: before submitting.
+description: '제출 전 체크리스트: 신선한 테스트·미완 표식·비밀값·기록 완결·출처·저장소 상태·사람 기록. PARTIAL은 한계 명시 시에만 제출 가능. 트리거: "제출해도 돼?", "마감 점검". Use: before submitting.'
 ---
 
 # submission-check — 제출 전 점검

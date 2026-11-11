@@ -1,6 +1,6 @@
 ---
 name: test-strategy
-description: 수용 기준→테스트 목록(경계·오류·순서), RED→GREEN→REFACTOR(첫 GREEN이면 기존 동작·테스트부터 점검), 커버리지 공백, 불안정 테스트. 트리거: "테스트 추가", "간헐적 실패 잡아", "TDD로". Use: tests.
+description: '수용 기준→테스트 목록(경계·오류·순서), RED→GREEN→REFACTOR(첫 GREEN이면 기존 동작·테스트부터 점검), 커버리지 공백, 불안정 테스트. 트리거: "테스트 추가", "간헐적 실패 잡아", "TDD로". Use: tests.'
 ---
 
 # test-strategy — 테스트 전략과 TDD

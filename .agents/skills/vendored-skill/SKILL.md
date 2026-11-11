@@ -1,6 +1,6 @@
 ---
 name: vendored-skill
-description: 폴백: vendor/의 OMC·OMX 원문 스킬 1파일을 읽어 Codex 도구로 번역해 수행. 재귀 1단계, 순환 금지. 트리거: "여기 없는 기능", "원본 스킬 참고". Use: $vendored-skill omc|omx <name>.
+description: '폴백: vendor/의 OMC·OMX 원문 스킬 1파일을 읽어 Codex 도구로 번역해 수행. 재귀 1단계, 순환 금지. 트리거: "여기 없는 기능", "원본 스킬 참고". Use: $vendored-skill omc|omx <name>.'
 ---
 
 # vendored-skill — 원본 스킬 참조 폴백

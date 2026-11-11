@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: Complex·고위험 계획의 독립 검토 합의(cofa-architect-deep → cofa-reviewer, 같은 스냅샷, 작성자만 종합, 최종본 재승인). 트리거: "설계 비교해", "대안 검토", "이 구조 괜찮아?". Use: architecture decision.
+description: 'Complex·고위험 계획의 독립 검토 합의(cofa-architect-deep → cofa-reviewer, 같은 스냅샷, 작성자만 종합, 최종본 재승인). 트리거: "설계 비교해", "대안 검토", "이 구조 괜찮아?". Use: architecture decision.'
 ---
 
 # design-review — 독립 검토 기반 설계 합의

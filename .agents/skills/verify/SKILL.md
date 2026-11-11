@@ -1,6 +1,6 @@
 ---
 name: verify
-description: 완료 주장을 신선한 실행 증거로 기준별 PASS/FAIL/INCOMPLETE/N-A 판정(cofa-verifier), docs/verification.md에 기록. 전부 PASS일 때만 PASS. 트리거: "제대로 돼?", "검증해", "요구사항 충족 확인". Use: verify.
+description: '완료 주장을 신선한 실행 증거로 기준별 PASS/FAIL/INCOMPLETE/N-A 판정(cofa-verifier), docs/verification.md에 기록. 전부 PASS일 때만 PASS. 트리거: "제대로 돼?", "검증해", "요구사항 충족 확인". Use: verify.'
 ---
 
 # verify — 검증

@@ -1,6 +1,6 @@
 ---
 name: model-routing
-description: 역할별 모델·effort 규칙, Terra·Luna 한정 용도, 404·레이트리밋·spawn 모델 검증 폴백, 캘리브레이션 표 형식. 트리거: "모델이 안 돼", "어떤 모델 쓸까". Use: model unavailable, new environment.
+description: '역할별 모델·effort 규칙, Terra·Luna 한정 용도, 404·레이트리밋·spawn 모델 검증 폴백, 캘리브레이션 표 형식. 트리거: "모델이 안 돼", "어떤 모델 쓸까". Use: model unavailable, new environment.'
 ---
 
 # model-routing — 모델 라우팅

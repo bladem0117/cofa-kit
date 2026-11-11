@@ -1,6 +1,6 @@
 ---
 name: crosscheck
-description: 고위험 변경을 작성 모델과 다른 리뷰어(cofa-reviewer-terra)가 반례·불변식으로 독립 검증. 다른 모델 불가면 미충족으로 기록. 트리거: "독립 검증", "반례 찾아줘", "다른 모델로 봐줘". Use: high-risk diff.
+description: '고위험 변경을 작성 모델과 다른 리뷰어(cofa-reviewer-terra)가 반례·불변식으로 독립 검증. 다른 모델 불가면 미충족으로 기록. 트리거: "독립 검증", "반례 찾아줘", "다른 모델로 봐줘". Use: high-risk diff.'
 ---
 
 # crosscheck — 다른 모델의 독립 교차검증

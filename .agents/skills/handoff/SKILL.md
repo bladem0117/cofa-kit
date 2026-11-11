@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: 단계 전환·컨텍스트 60%·새 세션 전·제출 전 인계 문서(docs/handoff.md): 현재 위치·결정·검증 상태·다음 행동·열린 위험. 재개 시 변경본 대조. 트리거: "새 세션에서 이어가기", "인계 정리". Use: before /new.
+description: '단계 전환·컨텍스트 60%·새 세션 전·제출 전 인계 문서(docs/handoff.md): 현재 위치·결정·검증 상태·다음 행동·열린 위험. 재개 시 변경본 대조. 트리거: "새 세션에서 이어가기", "인계 정리". Use: before /new.'
 ---
 
 # handoff — 인계 문서

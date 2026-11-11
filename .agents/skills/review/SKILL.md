@@ -1,6 +1,6 @@
 ---
 name: review
-description: 완성된 변경을 cofa-reviewer가 요구준수→정확성→위험→단순화 순으로 검토. 재현 또는 코드 경로 입증 결함만 보고, 재현 불가 고위험은 차단 후보. 트리거: "리뷰해", "코드 검토", "버그 찾아줘". Use: code review.
+description: '완성된 변경을 cofa-reviewer가 요구준수→정확성→위험→단순화 순으로 검토. 재현 또는 코드 경로 입증 결함만 보고, 재현 불가 고위험은 차단 후보. 트리거: "리뷰해", "코드 검토", "버그 찾아줘". Use: code review.'
 ---
 
 # review — 결함 리뷰

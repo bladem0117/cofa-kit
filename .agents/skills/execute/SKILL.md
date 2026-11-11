@@ -1,6 +1,6 @@
 ---
 name: execute
-description: 승인된 과제를 최소 diff로 구현하고 진행 중 검증. 독립 단위는 cofa-worker 병렬. "구현 종료"와 "검증 통과"를 분리 보고. 트리거: "구현해", "만들어줘", "고쳐줘(범위 명확)". Use: implement, build it.
+description: '승인된 과제를 최소 diff로 구현하고 진행 중 검증. 독립 단위는 cofa-worker 병렬. "구현 종료"와 "검증 통과"를 분리 보고. 트리거: "구현해", "만들어줘", "고쳐줘(범위 명확)". Use: implement, build it.'
 ---
 
 # execute — 구현

@@ -1,6 +1,6 @@
 ---
 name: remember
-description: 세션 지식을 notepad·decision-log·AGENTS 중 알맞은 곳에 보존. decision-log는 수정 대신 정정 엔트리. 트리거: "기억해", "다음에도 적용해". Use: remember, preference.
+description: '세션 지식을 notepad·decision-log·AGENTS 중 알맞은 곳에 보존. decision-log는 수정 대신 정정 엔트리. 트리거: "기억해", "다음에도 적용해". Use: remember, preference.'
 ---
 
 # remember — 지식 보존

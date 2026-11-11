@@ -1,6 +1,6 @@
 ---
 name: stakeholder-interview
-description: 실무자 역할 AI(없으면 과제문·README)와 간극 하나를 깊게 파 문제·병목·숫자 성공 기준·범위·제약을 합의문으로 고정. 구현 전 관문. 트리거: "요구사항부터 정리", "고객에게 뭘 물을까", "문제 정의". Use: requirements.
+description: '실무자 역할 AI(없으면 과제문·README)와 간극 하나를 깊게 파 문제·병목·숫자 성공 기준·범위·제약을 합의문으로 고정. 구현 전 관문. 트리거: "요구사항부터 정리", "고객에게 뭘 물을까", "문제 정의". Use: requirements.'
 ---
 
 # stakeholder-interview — 실무자 인터뷰와 합의문
